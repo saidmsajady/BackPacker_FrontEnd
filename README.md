@@ -1,8 +1,41 @@
-# React + Vite
+# Backpacking Trip Planner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+The Backpacking Trip Planner is a full-stack MERN application designed to help users plan and manage their backpacking trips. This project was inspired by my own experience on a Europe trip that turned out to be very disorganized and chaotic when it came to planning. I realized the need for a tool that could streamline the process, making it easier to plan trips and keep everything organized. From the very start of my class, I knew this was the project I wanted to create to help others avoid the hassles I faced and myself with future trips.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+With this application, users can create, read, update, and delete trips seamlessly through a React frontend connected to an Express and MongoDB backend. The application also leverages a third-party API to provide enriched information and features.
+
+## Features
+
+- **Full CRUD Operations**: Users can create, read, update, and delete trips.
+- **React Hooks**: Utilizes `useState`, `useEffect`, and other React hooks to manage state and side effects.
+- **Responsive Design**: Ensures a user-friendly experience across different devices.
+- **Third-Party API Integration**: Incorporates data from a third-party API to enhance trip planning.
+- **Four Key Pages**: Home, Create Trip, Countries, and About.
+
+## Technologies
+
+### FrontEnd
+
+- React
+- React Router
+- CSS
+
+### Backend
+
+- Node.js
+- Express.js
+- Mongoose
+
+## Future Improvements
+
+- **Drag and Drop**: Implement functionality to drag and reorder trips and countries.
+- **Additional Features**: Add user authentication, trip sharing, and more detailed trip planning options.
+- **Mobile App**: Develop a mobile version of the application using React Native.
+
+## Other GitHub Repositories
+
+- **Front End**: [Capstone_FrontEnd](https://github.com/saidmsajady/Capstone_FrontEnd.git)
+- **Back End**: [Capstone_BackEnd](https://github.com/saidmsajady/Capstone_BackEnd.git)
+- **Repo that contains my Commits**: [Capstone](https://github.com/saidmsajady/Capstone.git)
