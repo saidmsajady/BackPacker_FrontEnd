@@ -39,3 +39,17 @@ With this application, users can create, read, update, and delete trips seamless
 - **Front End**: [Capstone_FrontEnd](https://github.com/saidmsajady/Capstone_FrontEnd.git)
 - **Back End**: [Capstone_BackEnd](https://github.com/saidmsajady/Capstone_BackEnd.git)
 - **Repo that contains my Commits**: [Capstone](https://github.com/saidmsajady/Capstone.git)
+
+## Installation
+
+To set up the Backpacking Trip Planner, follow these steps:
+
+**Clone the Repositories:**
+
+   Clone both the frontend and backend repositories and install Dependencies:
+   git clone https://github.com/saidmsajady/Capstone_FrontEnd.git
+   git clone https://github.com/saidmsajady/Capstone_BackEnd.git
+
+## Deployment
+
+Plans are underway to deploy the application. The deployment will involve setting up both the frontend and backend on a cloud platform, ensuring that the application is accessible online. More details on deployment will be provided once the setup is complete.
