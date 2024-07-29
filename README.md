@@ -47,8 +47,8 @@ To set up the Backpacking Trip Planner, follow these steps:
 **Clone the Repositories:**
 
    Clone both the frontend and backend repositories and install Dependencies:
-   git clone https://github.com/saidmsajady/Capstone_FrontEnd.git
-   git clone https://github.com/saidmsajady/Capstone_BackEnd.git
+   - git clone https://github.com/saidmsajady/Capstone_FrontEnd.git
+   - git clone https://github.com/saidmsajady/Capstone_BackEnd.git
 
 ## Deployment
 
