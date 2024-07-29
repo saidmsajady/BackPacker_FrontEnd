@@ -45,50 +45,52 @@ const Create = () => {
   };
 
   return (
-    <form className='create-container' onSubmit={handleSubmit}>
-      <div>
-        <label className='trip-title'>Trip Title:</label>
-        <input
-          placeholder='Enter Your Trip Title'
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </div>
-      {countries.map((_, index) => (
-        <div key={index} className="trip-entry">
-          <label>Destination:</label>
+    <>
+      <form className='create-container' onSubmit={handleSubmit}>
+        <div>
+          <label className='trip-title'>Trip Title:</label>
           <input
-            placeholder='Blank'
+            placeholder='Enter Your Trip Title'
             type="text"
-            name="country"
-            value={countries[index].country}
-            onChange={(e) => handleChange(index, e)}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             required
           />
-          <label>Start Date:</label>
-          <input
-            type="date"
-            name="startDate"
-            value={countries[index].startDate}
-            onChange={(e) => handleChange(index, e)}
-            required
-          />
-          <label>End Date:</label>
-          <input
-            type="date"
-            name="endDate"
-            value={countries[index].endDate}
-            onChange={(e) => handleChange(index, e)}
-            required
-          />
-          <button type="button" onClick={() => handleRemoveCountry(index)}>Remove</button>
         </div>
-      ))}
-      <button type="button" onClick={handleAddCountry}>Add Destination</button>
-      <button type="submit">Create Trip</button>
-    </form>
+        {countries.map((_, index) => (
+          <div key={index} className="trip-entry">
+            <label>Destination:</label>
+            <input
+              placeholder='Blank'
+              type="text"
+              name="country"
+              value={countries[index].country}
+              onChange={(e) => handleChange(index, e)}
+              required
+            />
+            <label>Start Date:</label>
+            <input
+              type="date"
+              name="startDate"
+              value={countries[index].startDate}
+              onChange={(e) => handleChange(index, e)}
+              required
+            />
+            <label>End Date:</label>
+            <input
+              type="date"
+              name="endDate"
+              value={countries[index].endDate}
+              onChange={(e) => handleChange(index, e)}
+              required
+            />
+            <button type="button" onClick={() => handleRemoveCountry(index)}>Remove</button>
+          </div>
+        ))}
+        <button type="button" onClick={handleAddCountry}>Add Destination</button>
+        <button type="submit">Create Trip</button>
+      </form>
+    </>
   );
 };
 
