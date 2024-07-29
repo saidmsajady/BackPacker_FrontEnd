@@ -1,0 +1,76 @@
+.home-container {
+  padding-top: 60px; 
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #f1f1f1;
+}
+
+.trips-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.trip-card {
+  padding: 25px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.edit-form, .trip-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.edit-entry {
+  display: flex;
+  gap: 10px;
+}
+
+.save-button, .cancel-button, .edit-button, .delete-button, .create-trip-button {
+  margin-top: 10px;
+}
+
+.delete-button, .cancel-button, .remove-button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.delete-button:hover, .cancel-button:hover, .remove-button:hover{
+  background-color: #c82333;
+}
+
+.save-button, .edit-button, .create-trip-button, .add-country-button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.save-button:hover, .edit-button:hover, .create-trip-button:hover, .add-country-button:hover {
+  background-color: #0056b3;
+}
+
+.edit-button, .delete-button {
+  margin-left: 10px;
+}
+
+.trip-details h1 {
+  font-size: 35px;
+  text-decoration: underline;
+}
