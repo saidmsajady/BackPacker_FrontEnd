@@ -57,14 +57,17 @@ const About = () => {
 
       <div className='github-repo'>
         <h2>Other GitHub Repositories</h2>
-        <ul><b>For the Front End</b></ul>
-        <li>https://github.com/saidmsajady/Capstone_FrontEnd.git</li>
-        <ul><b>For the Back End</b></ul>
-        <li>https://github.com/saidmsajady/Capstone_BackEnd.git</li>
-        <ul><b>Repo that contains my Commits</b></ul>
-        <li>https://github.com/saidmsajady/Capstone.git</li>
-      </div>
+        <ul>
+          <li><b>For the Front End:</b></li>
+          <ul><a href="https://github.com/saidmsajady/Capstone_FrontEnd.git" target="_blank" className='url'>https://github.com/saidmsajady/Capstone_FrontEnd.git</a></ul>
+          <li><b>For the Back End:</b></li>
+          <ul><a href="https://github.com/saidmsajady/Capstone_BackEnd.git" target="_blank" className='url'>https://github.com/saidmsajady/Capstone_BackEnd.git</a></ul>
+          <li><b>Repo that contains my Commits:</b></li>
+          <ul><a href="https://github.com/saidmsajady/Capstone.git" target="_blank" className='url'>https://github.com/saidmsajady/Capstone.git</a></ul>
+        </ul>
     </div>
+  </div>
+
   )
 }
 
