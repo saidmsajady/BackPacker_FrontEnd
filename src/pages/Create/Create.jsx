@@ -4,10 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import './Create.css';
 
 const Create = () => {
+  // State variables for the trip title and countries array
   const [title, setTitle] = useState('');
   const [countries, setCountries] = useState([{ country: '', startDate: '', endDate: '' }]);
   const navigate = useNavigate();
 
+  // Handler for input changes in the countries array
   const handleChange = (index, e) => {
     const { name, value } = e.target;
     const newCountries = [...countries];
@@ -15,14 +17,17 @@ const Create = () => {
     setCountries(newCountries);
   };
 
+  // Handler to add a new country entry
   const handleAddCountry = () => {
     setCountries([...countries, { country: '', startDate: '', endDate: '' }]);
   };
 
+  // Handler to remove a country entry
   const handleRemoveCountry = (index) => {
     setCountries(countries.filter((_, i) => i !== index));
   };
 
+  // Handler for form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -36,6 +41,7 @@ const Create = () => {
     };
 
     try {
+      // Post the new trip data to the server
       await axios.post('http://localhost:3000/trips', newTrip);
       console.log('Trip created:', newTrip);
       navigate('/');
@@ -57,6 +63,7 @@ const Create = () => {
             required
           />
         </div>
+        {/* Map over the countries array to render input fields for each country */}
         {countries.map((_, index) => (
           <div key={index} className="trip-entry">
             <label>Destination:</label>

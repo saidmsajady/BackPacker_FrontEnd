@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import './Home.css'; 
 
 const Home = () => {
+  // State variables for trips data, currently editing trip, and edit form data
   const [trips, setTrips] = useState([]);
   const [editingTrip, setEditingTrip] = useState(null);
   const [editFormData, setEditFormData] = useState({
@@ -11,6 +12,7 @@ const Home = () => {
     countries: [{ country: '', startDate: '', endDate: '' }]
   });
 
+  // Fetch trips data when the component mounts
   useEffect(() => {
     const fetchTrips = async () => {
       try {
@@ -24,6 +26,7 @@ const Home = () => {
     fetchTrips();
   }, []);
 
+  // Handler for input changes in the edit form
   const handleEditChange = (index, e) => {
     const { name, value } = e.target;
     const newEditFormData = { ...editFormData };
@@ -31,6 +34,7 @@ const Home = () => {
     setEditFormData(newEditFormData);
   };
 
+  // Handler for submitting the edit form
   const handleEditSubmit = async (id) => {
     try {
       await axios.put(`http://localhost:3000/trips/${id}`, editFormData);
@@ -43,6 +47,7 @@ const Home = () => {
     }
   };
 
+  // Handler for deleting a trip
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:3000/trips/${id}`);
@@ -52,11 +57,13 @@ const Home = () => {
     }
   };
 
+  // Start editing a trip by setting the edit form data and the trip being edited
   const startEditing = (trip) => {
     setEditingTrip(trip._id);
     setEditFormData({ title: trip.title, countries: trip.countries });
   };
 
+  // Add a new country entry to the edit form
   const addCountry = () => {
     setEditFormData(prevState => ({
       ...prevState,
@@ -64,6 +71,7 @@ const Home = () => {
     }));
   };
 
+  // Remove a country entry from the edit form
   const removeCountry = (index) => {
     setEditFormData(prevState => {
       const newCountries = prevState.countries.filter((_, i) => i !== index);
@@ -80,7 +88,7 @@ const Home = () => {
           </div>
         ) : (
           <>
-            <h2> See All Your Trips Below !</h2>
+            <h2>See All Your Trips Below!</h2>
             <div className="trips-list">
               {trips.map(trip => (
                 <div key={trip._id} className="trip-card">
