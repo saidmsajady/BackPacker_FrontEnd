@@ -54,13 +54,7 @@ const Countries = () => {
       <br/><br/>
       <div className="filter-controls">
         {/* Search input for filtering countries by name */}
-        <input
-          type="text"
-          placeholder="Search by country name"
-          value={searchTerm}
-          onChange={handleSearchChange}
-          className="search-input"
-        />
+        <input type="text" placeholder="Search by country name" value={searchTerm} onChange={handleSearchChange} className="search-input"/>
         {/* Dropdown for selecting a region to filter countries */}
         <select value={selectedRegion} onChange={handleRegionChange} className="region-select">
           <option value="">All Regions</option>
@@ -69,26 +63,19 @@ const Countries = () => {
           ))}
         </select>
       </div>
+      
       <div className="countries-container">
         {/* Map over the filtered countries and render each country card */}
         {filteredCountries.map(country => (
+
           <div key={country.name.common} className="country-card">
             <img src={country.flags.svg} alt={`${country.name.common} flag`} className="country-flag" />
             <h2>{country.name.common}</h2>
+
             <p>Capital: {country.capital ? country.capital[0] : 'N/A'}</p>
             <p>Region: {country.region || 'N/A'}</p>
-            <p>
-              Languages: {country.languages 
-                ? Object.values(country.languages).join(', ') 
-                : 'N/A'}
-            </p>
-            <p>
-              Currencies: {country.currencies 
-                ? Object.values(country.currencies)
-                    .map(currency => currency.name)
-                    .join(', ') 
-                : 'N/A'}
-            </p>
+            <p>Languages: {country.languages ? Object.values(country.languages).join(', ') : 'N/A'}</p>
+            <p>Currencies: {country.currencies ? Object.values(country.currencies).map(currency => currency.name).join(', ') : 'N/A'}</p>
           </div>
         ))}
       </div>
