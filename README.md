@@ -50,6 +50,10 @@ To set up the Backpacking Trip Planner, follow these steps:
    - git clone https://github.com/saidmsajady/Capstone_FrontEnd.git
    - git clone https://github.com/saidmsajady/Capstone_BackEnd.git
 
+   For the Backend, run nodemon app.js
+
+   For the Frontend, run npm run dev
+
 ## Deployment
 
 Plans are underway to deploy the application. The deployment will involve setting up both the frontend and backend on a cloud platform, ensuring that the application is accessible online. More details on deployment will be provided once the setup is complete.
