@@ -88,7 +88,7 @@ const Home = () => {
           </div>
         ) : (
           <>
-            <h2>See All Your Trips Below!</h2>
+            <h2 className='first-title'>See All Your Trips Below!</h2>
             <div className="trips-list">
               {trips.map(trip => (
                 <div key={trip._id} className="trip-card">
@@ -112,7 +112,7 @@ const Home = () => {
                         </div>
                       ))}
 
-                      <button className="add-country-button" type="button" onClick={addCountry}>Add Country</button>
+                      <button className="add-country-button" type="button" onClick={addCountry}>Add Destination</button>
 
                       <button className="save-button"onClick={() => handleEditSubmit(trip._id)}>Save</button>
 

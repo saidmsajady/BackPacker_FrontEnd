@@ -2,6 +2,6 @@ import './Components.css';
 
 export default function Footer() {
     return (
-        <h4>Copyright &copy; SaidSajady_Capstone</h4>
+        <h4 className='footer'>Copyright &copy; SaidSajady_BackPackPlanner</h4>
     );
 }

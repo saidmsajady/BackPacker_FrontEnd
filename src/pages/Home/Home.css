@@ -1,76 +1,200 @@
+body {
+  background-color: #E7FBE6;
+  margin: 0; 
+  padding: 0;
+  font-family: 'Open Sans', sans-serif; 
+}
+
+html {
+  height: 100%; 
+}
+
 .home-container {
-  padding-top: 60px; 
+  margin-top: 100px;
+  padding-top: 20px;
   padding-left: 100px;
   padding-right: 100px;
   padding-bottom: 15px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  background-color: #f1f1f1;
+  background-color: #D9ABAB;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  font-family: 'Lato', sans-serif; 
+  color: #333; 
 }
 
-.trips-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* Font Styling for Headings */
+.first-title {
+  margin-bottom: 35px;
+  color: #FFF8E8; 
+  font-size: 36px;
+  font-weight: 700; 
+  font-family: 'Montserrat', sans-serif; 
+  letter-spacing: 1px; 
 }
 
+.trip-details h1 {
+  font-size: 30px;
+  text-decoration: underline;
+  font-family: 'Roboto', sans-serif; 
+  font-weight: 600; 
+  color: #333; 
+  margin-bottom: 15px;
+}
+
+/* Styling for Paragraphs */
+.trip-country p {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif; 
+  line-height: 1.6; 
+  color: #444; 
+}
+
+/* Font Styling for Buttons */
+button {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600; /* Bold buttons */
+  text-transform: uppercase; /* Make button text uppercase */
+  letter-spacing: 1px; /* Add some spacing between letters */
+}
+
+/* Trip card styling */
 .trip-card {
   padding: 25px;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
-  background-color: white;
+  background-color: #ffffff; 
+  font-family: 'Lato', sans-serif;
+  color: #333;
 }
 
+/* Edit and Details Section */
 .edit-form, .trip-details {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  font-family: 'Roboto', sans-serif;
 }
 
-.edit-entry {
-  display: flex;
-  gap: 10px;
+.edit-entry input {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #333;
 }
 
-.save-button, .cancel-button, .edit-button, .delete-button, .create-trip-button {
-  margin-top: 10px;
+/* Edit Button Styling */
+.edit-button {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: 2px solid #007bff; 
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600; 
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
 
-.delete-button, .cancel-button, .remove-button {
+.edit-button:hover {
+  background-color: white;
+  color: #007bff;
+  border-color: #007bff;
+}
+
+/* Delete Button Styling */
+.delete-button {
+  margin-left: 10px;
+  padding: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: 2px solid #dc3545;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: white;
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* Remove Button Styling */
+.remove-button {
   margin-top: 10px;
   padding: 10px;
   background-color: #dc3545;
   color: white;
-  border: none;
+  border: 2px solid #dc3545;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.remove-button:hover {
+  background-color: white;
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+/* Add Destination Button Styling */
+.add-country-button {
   margin-top: 10px;
+  padding: 10px;
+  background-color: #28a745; 
+  color: white;
+  border: 2px solid #28a745;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.delete-button:hover, .cancel-button:hover, .remove-button:hover{
-  background-color: #c82333;
+.add-country-button:hover {
+  background-color: white;
+  color: #28a745;
+  border-color: #28a745;
 }
 
-.save-button, .edit-button, .create-trip-button, .add-country-button {
+/* Save Button Styling */
+.save-button {
   margin-top: 10px;
   padding: 10px;
   background-color: #007bff;
   color: white;
-  border: none;
+  border: 2px solid #007bff;
   border-radius: 4px;
   cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: white;
+  color: #007bff;
+  border-color: #007bff;
+}
+
+/* Cancel Button Styling */
+.cancel-button {
   margin-top: 10px;
+  padding: 10px;
+  background-color: #6c757d; 
+  color: white;
+  border: 2px solid #6c757d;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.save-button:hover, .edit-button:hover, .create-trip-button:hover, .add-country-button:hover {
-  background-color: #0056b3;
-}
-
-.edit-button, .delete-button {
-  margin-left: 10px;
-}
-
-.trip-details h1 {
-  font-size: 35px;
-  text-decoration: underline;
+.cancel-button:hover {
+  background-color: white;
+  color: #6c757d;
+  border-color: #6c757d;
 }
