@@ -3,7 +3,7 @@ nav {
     padding: 1rem;
     display: flex;
     height: 80px;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     width: 100%; 
     position: fixed;
@@ -13,6 +13,11 @@ nav {
     border: none;
     box-shadow: 10px 2px 2px rgba(0, 0, 0, 0.1); 
     background-color: #02717d;
+}
+
+.left-nav, .middle-nav, .right-nav {
+    display: flex;
+    align-items: center;
 }
 
 nav a {
@@ -27,14 +32,26 @@ nav a {
     border-radius: 5px; 
 }
 
-nav a:hover {
+nav a:not(.logo-link):hover {
     border: 2px solid white; 
     color: rgba(255, 255, 255, 0.737); 
 }
 
-nav a.active {
+nav a.active:not(.logo-link) {
     border: 2px solid white; 
     color: rgba(255, 255, 255, 0.737);
+}
+
+.logo-img {
+    width: 70px; 
+    height: auto;
+    margin-right: 20px;
+    border-radius: 50%;
+    border: none;
+}
+
+.logo-link {
+    border: none; 
 }
 
 /* Footer Styles */
