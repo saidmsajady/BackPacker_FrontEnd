@@ -54,6 +54,19 @@ nav a.active:not(.logo-link) {
     border: none; 
 }
 
+.login-btn {
+    border-radius: 8px;
+    background-color: #19a3b3;
+    transition: border-color 0.25s;
+}
+
+.signup-btn {
+    border-radius: 8px;
+    background-color: #19a3b3;
+    transition: border-color 0.25s;
+    margin-right: 50px;
+}
+
 /* Footer Styles */
 .footer {
     margin-top: 60px;

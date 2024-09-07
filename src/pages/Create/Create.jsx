@@ -44,7 +44,7 @@ const Create = () => {
       // Post the new trip data to the server
       await axios.post('http://localhost:3000/trips', newTrip);
       console.log('Trip created:', newTrip);
-      navigate('/');
+      navigate('/Trips');
     } catch (error) {
       console.error('There was an error creating the trip!', error);
     }
