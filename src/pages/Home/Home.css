@@ -1,8 +1,9 @@
 /* General Styling */
 body {
-  background: linear-gradient(to top left, #1a0408e0 20%, #028391 80%);
+  background: linear-gradient(to top left, #030000df 20%, #028391 80%);
   margin: 0; 
   padding: 0;
+  z-index: 0;
 }
 
 html {
@@ -21,8 +22,8 @@ html {
 .first-title {
   margin-bottom: 35px;
   color: white; 
-  font-size: 36px;
-  font-weight: 700; 
+  font-size: 50px;
+  font-weight: 1000; 
   letter-spacing: 1px; 
 }
 
@@ -80,11 +81,6 @@ html {
   }
 }
 
-hr {
-  width: 300px;
-  margin-bottom: 35px;
-}
-
 /* Buttons */
 button {
   font-family: Gill Sans, Calibri, sans-serif;  
@@ -114,7 +110,7 @@ button {
   padding: 10px;
 }
 
-/* Add Destination, Save, and Cancel Buttons (Stacked Vertically) */
+/* Add Destination, Save, and Cancel Buttons  */
 .add-country-button, .save-button, .cancel-button {
   margin-top: 10px;
   width: 450px;
@@ -211,4 +207,14 @@ button {
   padding: 30px;
   font-size: 28px;
   color: white;
+}
+
+hr {
+  width: 450px;
+  margin-bottom: 35px;
+}
+
+.trip-divider {
+  width: 650px;
+  margin-top: 60px;
 }

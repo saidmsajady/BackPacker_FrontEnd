@@ -11,29 +11,30 @@ nav {
     left: 0;
     z-index: 1000;
     border: none;
+    box-shadow: 10px 2px 2px rgba(0, 0, 0, 0.1); 
+    background-color: #02717d;
 }
 
 nav a {
     color: white;
     text-decoration: none;
     margin: 0 20px;
+    padding: 10px 20px; 
     font-size: 1.5rem;
-    transition: color 0.3s ease;
+    transition: border 0.3s ease, color 0.3s ease; 
     font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
+    border: 2px solid transparent; 
+    border-radius: 5px; 
 }
 
 nav a:hover {
-    color: #FFDBB5; 
-    text-decoration: underline;
-    animation-duration: 2s;
+    border: 2px solid white; 
+    color: rgba(255, 255, 255, 0.737); 
 }
 
-nav .logo {
-    font-size: 1.5rem;
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-left: 20px;
+nav a.active {
+    border: 2px solid white; 
+    color: rgba(255, 255, 255, 0.737);
 }
 
 /* Footer Styles */
