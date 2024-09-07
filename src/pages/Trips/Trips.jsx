@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './Home.css'; 
+import './Trips.css'; 
 
-const Home = () => {
+const Trips = () => {
   const [trips, setTrips] = useState([]);
   const [editingTrip, setEditingTrip] = useState(null);
   const [editFormData, setEditFormData] = useState({
@@ -84,7 +84,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="home-container">
+      <div className="trips-container">
         {trips.length === 0 ? (
           <div className="no-trips">
             <p>No Trips Planned</p>
@@ -220,4 +220,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Trips;
