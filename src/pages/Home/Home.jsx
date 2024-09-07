@@ -88,53 +88,113 @@ const Home = () => {
           </div>
         ) : (
           <>
-            <h2 className='first-title'>See All Your Trips Below!</h2>
+            <h2 className="first-title">See All Your Trips Below!</h2>
             <div className="trips-list">
-              {trips.map(trip => (
+              {trips.map((trip) => (
                 <div key={trip._id} className="trip-card">
                   {editingTrip === trip._id ? (
-                    
                     <div className="edit-form">
-
-                      <input type="text" name="title" value={editFormData.title} onChange={(e) => setEditFormData(prevState => ({...prevState, title: e.target.value}))} placeholder="Title"/>
+                      <input
+                        type="text"
+                        name="title"
+                        value={editFormData.title}
+                        onChange={(e) =>
+                          setEditFormData((prevState) => ({
+                            ...prevState,
+                            title: e.target.value,
+                          }))
+                        }
+                        placeholder="Title"
+                        className='edit-title'
+                      />
                       {editFormData.countries.map((country, index) => (
-                        
                         <div key={index} className="edit-entry">
-                          
-                          <input type="text" name="country" value={country.country} onChange={(e) => handleEditChange(index, e)} placeholder="Country"/>
-                          
-                          <input type="date" name="startDate" value={country.startDate.split('T')[0]} onChange={(e) => handleEditChange(index, e)} />
-                          
-                          <input type="date" name="endDate" value={country.endDate.split('T')[0]} onChange={(e) => handleEditChange(index, e)}/>
-                          
-                          <button className="remove-button" type="button" onClick={() => removeCountry(index)}>Remove</button>
+                          <input
+                            type="text"
+                            name="country"
+                            value={country.country}
+                            onChange={(e) => handleEditChange(index, e)}
+                            placeholder="Country"
+                          />
 
+                          <input
+                            type="date"
+                            name="startDate"
+                            value={country.startDate.split("T")[0]}
+                            onChange={(e) => handleEditChange(index, e)}
+                          />
+
+                          <input
+                            type="date"
+                            name="endDate"
+                            value={country.endDate.split("T")[0]}
+                            onChange={(e) => handleEditChange(index, e)}
+                          />
+
+                          <button
+                            className="remove-button"
+                            type="button"
+                            onClick={() => removeCountry(index)}
+                          >
+                            Remove
+                          </button>
                         </div>
                       ))}
 
-                      <button className="add-country-button" type="button" onClick={addCountry}>Add Destination</button>
+                      <button
+                        className="add-country-button"
+                        type="button"
+                        onClick={addCountry}
+                      >
+                        Add Destination
+                      </button>
 
-                      <button className="save-button"onClick={() => handleEditSubmit(trip._id)}>Save</button>
+                      <button
+                        className="save-button"
+                        onClick={() => handleEditSubmit(trip._id)}
+                      >
+                        Save
+                      </button>
 
-                      <button className="cancel-button" onClick={() => setEditingTrip(null)}>Cancel</button>
-
+                      <button
+                        className="cancel-button"
+                        onClick={() => setEditingTrip(null)}
+                      >
+                        Cancel
+                      </button>
                     </div>
-
                   ) : (
-
                     <div className="trip-details">
-                      <h1>{trip.title}</h1>
-                      {trip.countries.map((country, index) => (
-                        <div key={index} className="trip-country">
-                          <h2>{country.country}</h2>
-                          <p>{`From: ${new Date(country.startDate).toDateString()} To: ${new Date(country.endDate).toDateString()}`}</p>
-                        </div>
-                      ))}
+                      <h1 className="trip-title">- {trip.title} -</h1>
+
+                      <div className="trip-details-grid">
+                        {trip.countries.map((country, index) => (
+                          <div key={index} className="trip-country">
+                            <h2>{country.country}</h2>
+                            <p>
+                              <strong>From:</strong>{" "}
+                              {new Date(country.startDate).toDateString()}
+                              <br></br>
+                              <strong> To:</strong>{" "}
+                              {new Date(country.endDate).toDateString()}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
 
                       <div className="trip-actions">
-                        <button className="edit-button" onClick={() => startEditing(trip)}>Edit</button>
-                        <button className="delete-button" onClick={() => handleDelete(trip._id)}>Delete</button>
-                        
+                        <button
+                          className="edit-button"
+                          onClick={() => startEditing(trip)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="delete-button"
+                          onClick={() => handleDelete(trip._id)}
+                        >
+                          Delete
+                        </button>
                       </div>
                     </div>
                   )}
@@ -143,6 +203,7 @@ const Home = () => {
             </div>
           </>
         )}
+        <hr></hr>
         <div className="create-trip-container">
           <Link to="/Create">
             <button className="create-trip-button">Create Trip</button>
@@ -150,6 +211,7 @@ const Home = () => {
         </div>
       </div>
     </>
+
   );
 };
 

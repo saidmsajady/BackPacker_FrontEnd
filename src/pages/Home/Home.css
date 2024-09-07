@@ -1,8 +1,8 @@
+/* General Styling */
 body {
-  background-color: #E7FBE6;
+  background: linear-gradient(to top left, #1a0408e0 20%, #028391 80%);
   margin: 0; 
   padding: 0;
-  font-family: 'Open Sans', sans-serif; 
 }
 
 html {
@@ -11,190 +11,204 @@ html {
 
 .home-container {
   margin-top: 100px;
-  padding-top: 20px;
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-bottom: 15px;
-  background-color: #D9ABAB;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px 100px 15px;
   border-radius: 10px;
-  font-family: 'Lato', sans-serif; 
   color: #333; 
+  z-index: 1001;
 }
 
-/* Font Styling for Headings */
+/* Headings */
 .first-title {
   margin-bottom: 35px;
-  color: #FFF8E8; 
+  color: white; 
   font-size: 36px;
   font-weight: 700; 
-  font-family: 'Montserrat', sans-serif; 
   letter-spacing: 1px; 
 }
 
 .trip-details h1 {
   font-size: 30px;
-  text-decoration: underline;
-  font-family: 'Roboto', sans-serif; 
-  font-weight: 600; 
-  color: #333; 
+  font-family: Gill Sans, Calibri, sans-serif;  
+  font-weight: 700; 
+  color: white; 
   margin-bottom: 15px;
+  text-decoration: none; 
 }
 
-/* Styling for Paragraphs */
+/* Trip Country Paragraph */
 .trip-country p {
   font-size: 16px;
-  font-family: 'Open Sans', sans-serif; 
-  line-height: 1.6; 
-  color: #444; 
+  font-family: Gill Sans, Calibri, sans-serif;  
+  line-height: 1.6;
+  color: white;
 }
 
-/* Font Styling for Buttons */
-button {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600; /* Bold buttons */
-  text-transform: uppercase; /* Make button text uppercase */
-  letter-spacing: 1px; /* Add some spacing between letters */
-}
-
-/* Trip card styling */
+/* Trip Card Styling */
 .trip-card {
   padding: 25px;
   border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
-  background-color: #ffffff; 
-  font-family: 'Lato', sans-serif;
-  color: #333;
-}
-
-/* Edit and Details Section */
-.edit-form, .trip-details {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  font-family: 'Roboto', sans-serif;
-}
-
-.edit-entry input {
-  font-family: 'Lato', sans-serif;
-  font-size: 16px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  color: #333;
-}
-
-/* Edit Button Styling */
-.edit-button {
-  margin-left: 10px;
-  padding: 10px;
-  background-color: #007bff;
   color: white;
-  border: 2px solid #007bff; 
+  font-family: Gill Sans, Calibri, sans-serif;
+  line-height: 1.6;
+}
+
+.trip-country {
+  border-radius: 10%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid white;
+}
+
+/* Grid Layout for Trip Countries */
+.trip-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 15px; 
+}
+
+@media (max-width: 1024px) {
+  .trip-details-grid {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 768px) {
+  .trip-details-grid {
+    grid-template-columns: repeat(1, 1fr); 
+  }
+}
+
+hr {
+  width: 300px;
+  margin-bottom: 35px;
+}
+
+/* Buttons */
+button {
+  font-family: Gill Sans, Calibri, sans-serif;  
+  line-height: 1.6;
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+  padding: 10px;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: 600; 
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-.edit-button:hover {
-  background-color: white;
-  color: #007bff;
-  border-color: #007bff;
+.edit-button, .delete-button, .create-trip-button {
+  transition: transform 0.3s ease;
 }
 
-/* Delete Button Styling */
+.edit-button:hover, .delete-button:hover, .create-trip-button:hover {
+  transform: scale(1.05);
+}
+
+.edit-button {
+  margin-top: 15px;
+}
+
 .delete-button {
   margin-left: 10px;
   padding: 10px;
-  background-color: #dc3545;
+}
+
+/* Add Destination, Save, and Cancel Buttons (Stacked Vertically) */
+.add-country-button, .save-button, .cancel-button {
+  margin-top: 10px;
+  width: 450px;
+  display: block; 
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto; 
   color: white;
-  border: 2px solid #dc3545;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.delete-button:hover {
+.add-country-button {
+  background-color: #28a745;
+  border: 2px solid #28a745;
+}
+
+.add-country-button:hover {
+  color: #28a745;
   background-color: white;
-  color: #dc3545;
-  border-color: #dc3545;
 }
 
-/* Remove Button Styling */
+.save-button {
+  background-color: #007bff;
+  border: 2px solid #007bff;
+}
+
+.save-button:hover {
+  color: #007bff;
+  background-color: white;
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  border: 2px solid #6c757d;
+}
+
+.cancel-button:hover {
+  color: #6c757d;
+  background-color: white;
+}
+
+
+/* Remove Button */
 .remove-button {
   margin-top: 10px;
-  padding: 10px;
+  margin-left: 10px;
   background-color: #dc3545;
   color: white;
   border: 2px solid #dc3545;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .remove-button:hover {
   background-color: white;
   color: #dc3545;
-  border-color: #dc3545;
 }
 
-/* Add Destination Button Styling */
-.add-country-button {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #28a745; 
-  color: white;
-  border: 2px solid #28a745;
+/* Edit Form Styling */
+.edit-form {
+  text-align: center;
+}
+
+/* Styling for the trip title input */
+.edit-title {
+  width: 100%; 
+  padding: 12px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px; 
+  background-color: white; 
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.edit-entry {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit-entry input {
+  margin-left: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 200px;
+  font-family: Gill Sans, Calibri, sans-serif;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-.add-country-button:hover {
-  background-color: white;
-  color: #28a745;
-  border-color: #28a745;
-}
-
-/* Save Button Styling */
-.save-button {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #007bff;
+.no-trips {
+  text-align: center;
+  padding: 30px;
+  font-size: 28px;
   color: white;
-  border: 2px solid #007bff;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.save-button:hover {
-  background-color: white;
-  color: #007bff;
-  border-color: #007bff;
-}
-
-/* Cancel Button Styling */
-.cancel-button {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #6c757d; 
-  color: white;
-  border: 2px solid #6c757d;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.cancel-button:hover {
-  background-color: white;
-  color: #6c757d;
-  border-color: #6c757d;
 }

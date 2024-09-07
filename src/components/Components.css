@@ -1,17 +1,16 @@
 /* Navbar Styles */
 nav {
-    background-color: #86AB89; /* Ocean green background */
     padding: 1rem;
     display: flex;
     height: 80px;
     justify-content: space-evenly;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%; 
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
+    border: none;
 }
 
 nav a {
@@ -19,12 +18,14 @@ nav a {
     text-decoration: none;
     margin: 0 20px;
     font-size: 1.5rem;
-    font-family: 'Roboto';
     transition: color 0.3s ease;
+    font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
 }
 
 nav a:hover {
-    color: #FFDBB5; /* Light ocean tone on hover */
+    color: #FFDBB5; 
+    text-decoration: underline;
+    animation-duration: 2s;
 }
 
 nav .logo {
@@ -37,6 +38,13 @@ nav .logo {
 
 /* Footer Styles */
 .footer {
+    margin-top: 60px;
     text-align: center;
     font-size: 18px;
+    color: white;
+    font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
+}
+
+.github_link:hover {
+    text-decoration: underline;
 }
