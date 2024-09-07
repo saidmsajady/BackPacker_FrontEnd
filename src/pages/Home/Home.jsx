@@ -37,10 +37,25 @@ const Home = () => {
   // Handler for submitting the edit form
   const handleEditSubmit = async (id) => {
     try {
-      await axios.put(`http://localhost:3000/trips/${id}`, editFormData);
-      setTrips(trips.map(trip =>
-        trip._id === id ? { ...trip, ...editFormData } : trip
-      ));
+      const updatedTrip = {
+        ...editFormData,
+        lastEdited: new Date(), // Set lastEdited to current date and time
+      };
+
+      // Send updated data to the server
+      const response = await axios.put(`http://localhost:3000/trips/${id}`, updatedTrip);
+
+      // Update the trips state with the updated trip and re-sort by lastEdited
+      setTrips((prevTrips) => {
+        const updatedTrips = prevTrips.map((trip) =>
+          trip._id === id ? response.data.trip : trip
+        );
+
+        // Sort the trips by lastEdited in descending order
+        return updatedTrips.sort((a, b) => new Date(b.lastEdited) - new Date(a.lastEdited));
+      });
+
+      // Close the edit form
       setEditingTrip(null);
     } catch (error) {
       console.error('Error updating trip:', error);
@@ -211,7 +226,6 @@ const Home = () => {
         </div>
       </div>
     </>
-
   );
 };
 
