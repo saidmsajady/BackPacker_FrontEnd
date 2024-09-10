@@ -32,15 +32,16 @@ nav a {
     border-radius: 5px; 
 }
 
-nav a:not(.logo-link):hover {
+nav a:not(.logo-link):not(.login-btn):not(.signup-btn):hover {
     border: 2px solid white; 
     color: rgba(255, 255, 255, 0.737); 
 }
 
-nav a.active:not(.logo-link) {
+nav a.active:not(.logo-link):not(.login-btn):not(.signup-btn) {
     border: 2px solid white; 
     color: rgba(255, 255, 255, 0.737);
 }
+
 
 .logo-img {
     width: 70px; 
@@ -48,6 +49,11 @@ nav a.active:not(.logo-link) {
     margin-right: 20px;
     border-radius: 50%;
     border: none;
+    transition: transform 0.3s ease; 
+}
+
+.logo-img:hover {
+    transform: scale(1.2); 
 }
 
 .logo-link {
@@ -58,6 +64,9 @@ nav a.active:not(.logo-link) {
     border-radius: 8px;
     background-color: #19a3b3;
     transition: border-color 0.25s;
+    border: none;
+    font-size: 1.2rem;
+    text-transform: uppercase;
 }
 
 .signup-btn {
@@ -65,6 +74,17 @@ nav a.active:not(.logo-link) {
     background-color: #19a3b3;
     transition: border-color 0.25s;
     margin-right: 50px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.login-btn:hover, .signup-btn:hover {
+    transform: scale(1.1); 
+    transition: transform 0.3s ease-in-out; 
+    background-color: #128996; 
+    color: white;
 }
 
 /* Footer Styles */

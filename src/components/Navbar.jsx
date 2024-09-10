@@ -1,5 +1,5 @@
 import './Components.css';
-import logo from './Logo.jpg'; // Import the image
+import logo from './Logo.jpg'; 
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -11,6 +11,7 @@ const Navbar = () => {
         <Link to={'/Trips'}>Trips</Link>
         <Link to={'/Create'}>Create</Link>
         <Link to={'/Countries'}>Countries</Link>
+        <Link to={'/Contact'}>Contact</Link>
       </div>
 
       <div className='right-nav'>

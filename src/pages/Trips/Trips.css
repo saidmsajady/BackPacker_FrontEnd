@@ -9,6 +9,10 @@ body {
   html {
     height: 100%; 
   }
+
+  h1 {
+    text-align: center;
+  }
   
   .trips-container {
     margin-top: 80px;
