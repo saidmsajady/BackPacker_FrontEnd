@@ -16,7 +16,7 @@ const Home = () => {
       <div className="home-flex-container">
         <div className="container">
           <h1 className='title'>{wrapLetters('Welcome to Explore Mate -')}</h1>
-          <h1 className='title'>{wrapLetters('Where your next adventure starts!')}</h1>
+          <h1 className='title-2'>{wrapLetters('Where your next adventure starts!')}</h1>
           <h2 className='site-bio'>
             Whether you're conquering mountains or finding hidden gems, <br />
             keep track of your travels and never miss a destination. <br />

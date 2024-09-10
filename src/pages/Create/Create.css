@@ -1,4 +1,5 @@
 .create-container {
+  margin-top: 100px;
   padding: 30px;
   padding-left: 100px;
   padding-right: 100px;
@@ -6,6 +7,10 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   margin-bottom: 10px;
   background-color: #f1f1f1;
+}
+
+.create-container:hover {
+  border: 1px solid white;
 }
 
 .create-container input, .create-container label, .create-container button {
