@@ -32,15 +32,18 @@ nav a {
     border-radius: 5px; 
 }
 
-nav a:not(.logo-link):not(.login-btn):not(.signup-btn):hover {
-    border: 2px solid white; 
-    color: rgba(255, 255, 255, 0.737); 
+/* Active state for navigation links except for logo, login, and signup */
+nav a.active:not(.logo-link):not(.login-btn):not(.signup-btn) {
+    border: 2px solid white;
+    color: white;
 }
 
-nav a.active:not(.logo-link):not(.login-btn):not(.signup-btn) {
-    border: 2px solid white; 
-    color: rgba(255, 255, 255, 0.737);
+/* Hover state, which you already have */
+nav a:not(.logo-link):not(.login-btn):hover {
+    border: 1.5px solid rgba(255, 255, 255, 0.683);
+    color: white;
 }
+
 
 
 .logo-img {

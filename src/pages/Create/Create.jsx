@@ -52,6 +52,7 @@ const Create = () => {
 
   return (
     <>
+      <h1 className='create-page-title'>Create your new trip below!</h1>
       <form className='create-container' onSubmit={handleSubmit}>
         <div>
           <label className='trip-title'>Trip Title:</label>
