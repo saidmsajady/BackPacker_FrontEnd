@@ -56,7 +56,7 @@ const Create = () => {
       <form className='create-container' onSubmit={handleSubmit}>
         <div>
           <label className='trip-title'>Trip Title:</label>
-          <input placeholder='Enter Your Trip Title' type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
+          <input className='title-input' placeholder='Enter Your Trip Title' type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
         </div>
 
         {/* Map over the countries array to render input fields for each country */}

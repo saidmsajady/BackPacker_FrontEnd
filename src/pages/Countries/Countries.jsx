@@ -51,6 +51,8 @@ const Countries = () => {
 
   return (
     <>
+      <h1 className='countries-page-title'>Create your new trip below!</h1>
+      <div className='container-country'>
       <br/><br/>
       <div className="filter-controls">
         {/* Search input for filtering countries by name */}
@@ -78,6 +80,7 @@ const Countries = () => {
             <p>Currencies: {country.currencies ? Object.values(country.currencies).map(currency => currency.name).join(', ') : 'N/A'}</p>
           </div>
         ))}
+      </div>
       </div>
     </>
   );

@@ -127,32 +127,41 @@ body {
   
   .add-country-button {
     background-color: #28a745;
-    border: 2px solid #28a745;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
   }
   
   .add-country-button:hover {
-    color: #28a745;
-    background-color: white;
+    transform: scale(1.05);
+    background-color: #259a41;
   }
   
   .save-button {
     background-color: #007bff;
-    border: 2px solid #007bff;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
   }
   
   .save-button:hover {
-    color: #007bff;
-    background-color: white;
+    transform: scale(1.05);
+    background-color: #0d77e8;
   }
   
   .cancel-button {
     background-color: #6c757d;
-    border: 2px solid #6c757d;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
   }
   
   .cancel-button:hover {
-    color: #6c757d;
-    background-color: white;
+    transform: scale(1.05);
+    background-color: #62676b;
   }
   
   
@@ -162,12 +171,13 @@ body {
     margin-left: 10px;
     background-color: #dc3545;
     color: white;
-    border: 2px solid #dc3545;
+    border: none;
+    margin-bottom: 10px;
   }
   
   .remove-button:hover {
-    background-color: white;
-    color: #dc3545;
+    transform: scale(1.05);
+    background-color: #cd3444;
   }
   
   /* Edit Form Styling */

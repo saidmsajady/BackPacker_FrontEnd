@@ -71,6 +71,10 @@
   padding: 12px;
 }
 
+.trip-input {
+  width: 500px;
+}
+
 .trip-title {
   margin-right: 20px;
 }
@@ -78,7 +82,7 @@
 /* Button Styling */
 .create-container button {
   padding: 15px;
-  background-color: #19a3b3;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 6px;
@@ -95,7 +99,7 @@
 }
 
 .create-container button:hover {
-  background-color: #128996;
+  background-color: #0d77e8;
   transform: scale(1.05);
 }
 
@@ -110,7 +114,7 @@
 }
 
 .trip-entry button:hover {
-  background-color: #c82333;
+  background-color: #cd3444;
 }
 
 /* Responsive Design */
