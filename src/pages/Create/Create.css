@@ -12,13 +12,14 @@
 /* Container Styling */
 .create-container {
   margin-top: 20px;
-  padding: 40px;
+  padding: 50px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  background-color: #f9f9f9;
-  max-width: 1200px; /* Increased width */
+  background-color: white;
+  max-width: 1200px; 
   margin-left: auto;
   margin-right: auto;
+  border: 1px solid white;
 }
 
 /* Form Inputs Styling */

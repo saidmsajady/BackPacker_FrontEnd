@@ -48,7 +48,7 @@
   /* Button styling */
   .signup-home-btn button {
       padding: 0.8rem 2rem;
-      background-color: #19a3b3; 
+      background-color: #7244d5; 
       color: white;
       border: none;
       font-size: 1.2rem;
@@ -101,8 +101,6 @@
   }
   
   .home-flex-container img:hover {
-      /* transform: scale(1.2); 
-      transition: transform 0.3s ease;  */
       transform: scale(1.2) perspective(1000px) rotateY(15deg) rotateX(5deg);
       transition: transform 0.6s ease;
   }

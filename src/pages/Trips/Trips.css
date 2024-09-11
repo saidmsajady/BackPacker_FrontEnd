@@ -100,9 +100,24 @@ body {
   .edit-button, .delete-button, .create-trip-button {
     transition: transform 0.3s ease;
   }
+
+  .edit-button, .delete-button, .create-trip-button {
+    padding: 0.8rem 2rem;
+    background-color: #128996; 
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    margin-top: 35px;  
+  }
   
   .edit-button:hover, .delete-button:hover, .create-trip-button:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    background-color: #128996;
   }
   
   .edit-button {
@@ -111,7 +126,12 @@ body {
   
   .delete-button {
     margin-left: 10px;
-    padding: 10px;
+  }
+
+  .create-trip-button {
+    margin-top: 5px;
+    background-color: #7244d5;
+    margin-bottom: 50px;
   }
   
   /* Add Destination, Save, and Cancel Buttons  */
