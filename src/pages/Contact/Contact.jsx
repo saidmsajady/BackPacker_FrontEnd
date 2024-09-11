@@ -7,16 +7,18 @@ const Contact = () => {
 
   const sendEmail = (e) => {
     e.preventDefault();
-
+  
     emailjs.sendForm('service_ff0upku', 'template_8j7xwzo', form.current, '93fC-lhbajizzX8sS')
       .then((result) => {
           console.log('SUCCESS!', result.text);
-          alert("Message Sent Successfully!"); // Optionally display an alert for success
+          alert("Message Sent Successfully!");
+          form.current.reset(); // Reset the form after success
       }, (error) => {
           console.log('FAILED...', error.text);
-          alert("Message Sending Failed. Please try again."); // Optionally display an alert for failure
+          alert("Message Sending Failed. Please try again.");
       });
   };
+  
 
   return (
     <>
