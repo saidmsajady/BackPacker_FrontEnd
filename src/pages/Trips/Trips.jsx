@@ -91,7 +91,7 @@ const Trips = () => {
           </div>
         ) : (
           <>
-            <h2 className="first-title">See All Your Trips Below!</h2>
+            <h2 className="first-title">See All Your Trips!</h2>
             <div className="trips-list">
               {trips.map((trip, index) => (
                 <React.Fragment key={trip._id}>

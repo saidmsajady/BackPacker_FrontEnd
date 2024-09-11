@@ -3,6 +3,7 @@ import './Contact.css';
 
 const Contact = () => {
   return (
+    <>
     <div className='contact-container'>
       <div className='left-container'>
         <h1>Contact Me</h1>
@@ -11,7 +12,7 @@ const Contact = () => {
           I’m always open to communication and would love to hear from you! Whether you
           have questions, feedback, or potential collaboration ideas, feel free to reach out.
           Simply fill out the contact form, and don’t hesitate to let me know if you spot any
-          errors—I appreciate your input!
+          errors — I appreciate your input!
         </p>
         <div className="social-icons">
           <a href="https://www.linkedin.com/in/said-masih-sajady/" aria-label="LinkedIn" target='_blank'>
@@ -25,8 +26,33 @@ const Contact = () => {
           </a>
         </div>
       </div>
-    </div>
-  );
-};
 
-export default Contact;
+      <div className='right-container'>
+        <form className='contact-form'>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="name"></label>
+              <input type="text" id="name" name="name" placeholder='Name'required />
+            </div>
+            <div className="form-group">
+              <label htmlFor="email"></label>
+              <input type="email" id="email" name="email" placeholder='Email' required />
+            </div>
+          </div>
+          <div className="form-group">
+            <label htmlFor="subject"></label>
+            <input type="text" id="subject" name="subject" placeholder='Subject' required />
+          </div>
+          <div className="form-group">
+            <label htmlFor="message"></label>
+            <textarea id="message" name="message" rows="6" placeholder='Message' required></textarea>
+          </div>
+          <button type="submit" className="send-button">Send Message</button>
+        </form>
+      </div>
+      </div>
+      </>
+    );
+  };
+  
+  export default Contact;

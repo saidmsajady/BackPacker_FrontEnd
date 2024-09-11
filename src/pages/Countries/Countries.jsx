@@ -51,7 +51,7 @@ const Countries = () => {
 
   return (
     <>
-      <h1 className='countries-page-title'>Create your new trip below!</h1>
+      <h1 className='countries-page-title'>Get some inspo for your trip!</h1>
       <div className='container-country'>
       <br/><br/>
       <div className="filter-controls">
