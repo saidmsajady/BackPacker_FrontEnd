@@ -1,3 +1,15 @@
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Container */
 .contact-container {
   display: flex;
@@ -7,12 +19,14 @@
   max-width: 1400px;
   margin: 0 auto;
   color: white;
+  animation: fadeIn 1s ease-in-out; /* Fade-in for the container */
 }
 
 /* Left Container */
 .left-container {
   flex: 1;
   text-align: left;
+  animation: fadeIn 1.5s ease-in-out; /* Fade-in for the left container */
 }
 
 .left-container h1 {
@@ -36,6 +50,16 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
+/* Styling for individual letters */
+.letter {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.letter:hover {
+  transform: scale(1.5);
+}
+
 /* Social Icons */
 .social-icons {
   display: flex;
@@ -43,6 +67,7 @@
   align-items: center;
   gap: 15px;
   margin-top: 15px;
+  animation: fadeIn 2s ease-in-out; /* Fade-in for social icons */
 }
 
 .social-icons svg {
@@ -64,6 +89,7 @@
   border-radius: 10px;
   padding: 45px;
   max-width: 900px; 
+  animation: fadeIn 1.8s ease-in-out; /* Fade-in for the right container */
 }
 
 /* Contact Form */
@@ -72,6 +98,7 @@
   flex-direction: column;
   gap: 25px;
   margin-right: 20px;
+  animation: fadeIn 2s ease-in-out; /* Fade-in for the contact form */
 }
 
 .form-group {
@@ -101,7 +128,6 @@
   height: 150px; 
 }
 
-
 /* Send Button */
 .send-button {
   padding: 0.8rem 2rem;
@@ -116,6 +142,7 @@
   cursor: pointer;
   transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
   margin-left: 52.5px;
+  animation: fadeIn 2.5s ease-in-out; /* Fade-in for the send button */
 }
 
 .send-button:hover {

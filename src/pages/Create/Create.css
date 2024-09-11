@@ -1,3 +1,15 @@
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Title Styling */
 .create-page-title {
   color: white;
@@ -7,6 +19,7 @@
   text-align: center;
   margin-top: 50px;
   margin-bottom: 65px;
+  animation: fadeIn 1.2s ease-in-out; /* Fade-in for title */
 }
 
 /* Container Styling */
@@ -20,6 +33,7 @@
   margin-left: auto;
   margin-right: auto;
   border: 1px solid white;
+  animation: fadeIn 1.5s ease-in-out; /* Fade-in for container */
 }
 
 /* Form Inputs Styling */
@@ -91,6 +105,7 @@
   cursor: pointer;
   transition: transform 0.3s ease, background-color 0.3s ease;
   width: 100%;
+  animation: fadeIn 2s ease-in-out; /* Fade-in for buttons */
 }
 
 /* Add margin-top to buttons */

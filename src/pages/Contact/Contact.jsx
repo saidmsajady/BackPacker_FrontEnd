@@ -2,12 +2,19 @@ import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import './Contact.css';
 
+// Function to wrap each letter of a string in a span, including spaces
+const wrapLetters = (text) => {
+  return text.split("").map((char, index) => (
+    <span key={index} className="letter">{char === " " ? "\u00A0" : char}</span>
+  ));
+};
+
 const Contact = () => {
   const form = useRef(); // useRef to reference the form
 
   const sendEmail = (e) => {
     e.preventDefault();
-  
+
     emailjs.sendForm('service_ff0upku', 'template_8j7xwzo', form.current, '93fC-lhbajizzX8sS')
       .then((result) => {
           console.log('SUCCESS!', result.text);
@@ -18,13 +25,12 @@ const Contact = () => {
           alert("Message Sending Failed. Please try again.");
       });
   };
-  
 
   return (
     <>
       <div className='contact-container'>
         <div className='left-container'>
-          <h1>Contact Me!</h1>
+          <h1>{wrapLetters('Contact Me!')}</h1>
           <h2>Thank you for your interest in getting in touch!</h2>
           <p>
             I’m always open to communication and would love to hear from you! Whether you

@@ -1,3 +1,15 @@
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Page Title */
 .countries-page-title {
   color: white;
@@ -7,12 +19,14 @@
   text-align: center;
   margin-top: 150px; 
   margin-bottom: -35px;  
+  animation: fadeIn 1s ease-in-out; /* Fade-in for page title */
 }
 
 /* Container Styling */
 .countries-container {
   margin-top: 30px;
   padding: 0 20px; 
+  animation: fadeIn 1.5s ease-in-out; /* Fade-in for container */
 }
 
 /* Filter Controls */
@@ -22,6 +36,7 @@
   align-items: center;
   margin-bottom: 20px;
   margin-top: 50px;
+  animation: fadeIn 1.2s ease-in-out; /* Fade-in for filter controls */
 }
 
 .search-input, .region-select {
@@ -45,6 +60,7 @@
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  animation: fadeIn 2s ease-in-out; /* Fade-in for countries container */
 }
 
 /* Country Card */
@@ -57,6 +73,7 @@
   width: 250px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition */
+  animation: fadeIn 1.7s ease-in-out; /* Faster fade-in for country cards */
 }
 
 .country-card:hover {

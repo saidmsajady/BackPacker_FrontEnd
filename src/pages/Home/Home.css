@@ -16,6 +16,18 @@
       text-align: left;
   }
   
+  /* Keyframes for fade-in */
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px); /* Optional slight upward movement */
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   /* Headings */
   h1 {
       color: white;
@@ -31,11 +43,16 @@
   
   .title {
       text-align: left;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
   }
 
   .title-2 {
       text-align: left;
       max-width: 470px;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+      animation-delay: 0.5s; /* Delay for the second title */
   }
   
   .site-bio {
@@ -43,6 +60,9 @@
       font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
       font-size: 20px;
       margin-top: 50px;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+      animation-delay: 1s; /* Delay for the site-bio */
   }
   
   /* Button styling */
@@ -58,6 +78,9 @@
       cursor: pointer;
       transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
       margin-top: 35px;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+      animation-delay: 1s; /* Same delay as site-bio */
   }
   
   .signup-home-btn button:hover {
@@ -82,6 +105,9 @@
   .home-flex-container img {
       width: 450px; 
       height: auto;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards;
+      animation-delay: 1s; /* Same delay as site-bio and button */
   }
   
   .home-flex-container img:hover {
@@ -93,4 +119,4 @@
       border-radius: 25%;
       border: 1px solid white;
       padding: 20px;
-  }  
+  }

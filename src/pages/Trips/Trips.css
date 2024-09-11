@@ -1,254 +1,278 @@
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* General Styling */
 body {
-    background: linear-gradient(to top left, #030000df 20%, #028391 80%);
-    margin: 0; 
-    padding: 0;
-    z-index: 0;
-  }
-  
-  html {
-    height: 100%; 
-  }
+  background: linear-gradient(to top left, #030000df 20%, #028391 80%);
+  margin: 0; 
+  padding: 0;
+  z-index: 0;
+}
 
-  h1 {
-    text-align: center;
-  }
-  
-  .trips-container {
-    margin-top: 80px;
-    padding: 20px 100px 15px;
-    border-radius: 10px;
-    color: #333; 
-    z-index: 1001;
-  }
-  
-  /* Headings */
-  .first-title {
-    margin-bottom: 15px;
-    color: white; 
-    font-size: 50px;
-    font-weight: 1000; 
-    letter-spacing: 1px; 
-  }
-  
-  .trip-details h1 {
-    font-size: 30px;
-    font-family: Gill Sans, Calibri, sans-serif;  
-    font-weight: 700; 
-    color: white; 
-    margin-bottom: 15px;
-    text-decoration: none; 
-  }
-  
-  /* Trip Country Paragraph */
-  .trip-country p {
-    font-size: 16px;
-    font-family: Gill Sans, Calibri, sans-serif;  
-    line-height: 1.6;
-    color: white;
-  }
-  
-  /* Trip Card Styling */
-  .trip-card {
-    padding: 25px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    color: white;
-    font-family: Gill Sans, Calibri, sans-serif;
-    line-height: 1.6;
-  }
-  
-  .trip-country {
-    border-radius: 10%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid white;
-  }
-  
-  /* Grid Layout for Trip Countries */
+html {
+  height: 100%; 
+}
+
+h1 {
+  text-align: center;
+}
+
+/* Fade-in for .trips-container */
+.trips-container {
+  margin-top: 80px;
+  padding: 20px 100px 15px;
+  border-radius: 10px;
+  color: #333; 
+  z-index: 1001;
+  animation: fadeIn 1.2s ease-in-out; /* Fade-in for container */
+}
+
+/* Headings */
+.first-title {
+  margin-bottom: 15px;
+  color: white; 
+  font-size: 50px;
+  font-weight: 1000; 
+  letter-spacing: 1px; 
+  animation: fadeIn 1.2s ease-in-out; /* Fade-in for first title */
+}
+
+.trip-details h1 {
+  font-size: 30px;
+  font-family: Gill Sans, Calibri, sans-serif;  
+  font-weight: 700; 
+  color: white; 
+  margin-bottom: 15px;
+  text-decoration: none; 
+  animation: fadeIn 1.5s ease-in-out; /* Fade-in for trip details title */
+}
+
+/* Trip Country Paragraph */
+.trip-country p {
+  font-size: 16px;
+  font-family: Gill Sans, Calibri, sans-serif;  
+  line-height: 1.6;
+  color: white;
+  animation: fadeIn 1.8s ease-in-out; /* Fade-in for trip country */
+}
+
+/* Trip Card Styling */
+.trip-card {
+  padding: 25px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  color: white;
+  font-family: Gill Sans, Calibri, sans-serif;
+  line-height: 1.6;
+  animation: fadeIn 2s ease-in-out; /* Fade-in for trip card */
+}
+
+.trip-country {
+  border-radius: 10%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid white;
+  animation: fadeIn 2s ease-in-out; /* Fade-in for trip country */
+}
+
+/* Grid Layout for Trip Countries */
+.trip-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 15px; 
+  animation: fadeIn 1.5s ease-in-out; /* Fade-in for trip details grid */
+}
+
+@media (max-width: 1024px) {
   .trip-details-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 15px; 
+    grid-template-columns: repeat(2, 1fr); 
   }
-  
-  @media (max-width: 1024px) {
-    .trip-details-grid {
-      grid-template-columns: repeat(2, 1fr); 
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .trip-details-grid {
-      grid-template-columns: repeat(1, 1fr); 
-    }
-  }
-  
-  /* Buttons */
-  button {
-    font-family: Gill Sans, Calibri, sans-serif;  
-    line-height: 1.6;
-    text-transform: uppercase; 
-    letter-spacing: 1px; 
-    padding: 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .edit-button, .delete-button, .create-trip-button {
-    transition: transform 0.3s ease;
-  }
+}
 
-  .edit-button, .delete-button, .create-trip-button {
-    padding: 0.8rem 2rem;
-    background-color: #128996; 
-    color: white;
-    border: none;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
-    margin-top: 35px;  
+@media (max-width: 768px) {
+  .trip-details-grid {
+    grid-template-columns: repeat(1, 1fr); 
   }
-  
-  .edit-button:hover, .delete-button:hover, .create-trip-button:hover {
-    transform: scale(1.1);
-    background-color: #128996;
-  }
-  
-  .edit-button {
-    margin-top: 15px;
-  }
-  
-  .delete-button {
-    margin-left: 10px;
-  }
+}
 
-  .create-trip-button {
-    margin-top: 5px;
-    background-color: #7244d5;
-    margin-bottom: 50px;
-  }
-  
-  /* Add Destination, Save, and Cancel Buttons  */
-  .add-country-button, .save-button, .cancel-button {
-    margin-top: 10px;
-    width: 450px;
-    display: block; 
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto; 
-    color: white;
-  }
-  
-  .add-country-button {
-    background-color: #28a745;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .add-country-button:hover {
-    transform: scale(1.05);
-    background-color: #259a41;
-  }
-  
-  .save-button {
-    background-color: #007bff;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .save-button:hover {
-    transform: scale(1.05);
-    background-color: #0d77e8;
-  }
-  
-  .cancel-button {
-    background-color: #6c757d;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-  }
-  
-  .cancel-button:hover {
-    transform: scale(1.05);
-    background-color: #62676b;
-  }
-  
-  
-  /* Remove Button */
-  .remove-button {
-    margin-top: 10px;
-    margin-left: 10px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    margin-bottom: 10px;
-  }
-  
-  .remove-button:hover {
-    transform: scale(1.05);
-    background-color: #cd3444;
-  }
-  
-  /* Edit Form Styling */
-  .edit-form {
-    text-align: center;
-  }
-  
-  /* Styling for the trip title input */
-  .edit-title {
-    width: 100%; 
-    padding: 12px;
-    font-size: 20px;
-    border: none;
-    border-radius: 5px; 
-    background-color: white; 
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .edit-entry {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .edit-entry input {
-    margin-left: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 200px;
-    font-family: Gill Sans, Calibri, sans-serif;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-    color: #333;
-  }
-  
-  .no-trips {
-    text-align: center;
-    padding: 30px;
-    font-size: 28px;
-    color: white;
-  }
-  
-  hr {
-    width: 450px;
-    margin-bottom: 35px;
-  }
-  
-  .trip-divider {
-    width: 650px;
-    margin-top: 60px;
-  }
+/* Buttons */
+button {
+  font-family: Gill Sans, Calibri, sans-serif;  
+  line-height: 1.6;
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.edit-button, .delete-button, .create-trip-button {
+  transition: transform 0.3s ease;
+}
+
+.edit-button, .delete-button, .create-trip-button {
+  padding: 0.8rem 2rem;
+  background-color: #128996; 
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  margin-top: 35px;  
+  animation: fadeIn 2.2s ease-in-out; /* Fade-in for buttons */
+}
+
+.edit-button:hover, .delete-button:hover, .create-trip-button:hover {
+  transform: scale(1.1);
+  background-color: #128996;
+}
+
+.edit-button {
+  margin-top: 15px;
+}
+
+.delete-button {
+  margin-left: 10px;
+}
+
+.create-trip-button {
+  margin-top: 5px;
+  background-color: #7244d5;
+  margin-bottom: 50px;
+}
+
+/* Add Destination, Save, and Cancel Buttons  */
+.add-country-button, .save-button, .cancel-button {
+  margin-top: 10px;
+  width: 450px;
+  display: block; 
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto; 
+  color: white;
+  animation: fadeIn 2.4s ease-in-out; /* Fade-in for save/cancel buttons */
+}
+
+/* Fade-in and hover effects for specific buttons */
+.add-country-button {
+  background-color: #28a745;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.add-country-button:hover {
+  transform: scale(1.05);
+  background-color: #259a41;
+}
+
+.save-button {
+  background-color: #007bff;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.save-button:hover {
+  transform: scale(1.05);
+  background-color: #0d77e8;
+}
+
+.cancel-button {
+  background-color: #6c757d;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  transform: scale(1.05);
+  background-color: #62676b;
+}
+
+/* Remove Button */
+.remove-button {
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  margin-bottom: 10px;
+  animation: fadeIn 2.2s ease-in-out; /* Fade-in for remove button */
+}
+
+.remove-button:hover {
+  transform: scale(1.05);
+  background-color: #cd3444;
+}
+
+/* Edit Form Styling */
+.edit-form {
+  text-align: center;
+}
+
+/* Styling for the trip title input */
+.edit-title {
+  width: 100%; 
+  padding: 12px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px; 
+  background-color: white; 
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.edit-entry {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.edit-entry input {
+  margin-left: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 200px;
+  font-family: Gill Sans, Calibri, sans-serif;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.no-trips {
+  text-align: center;
+  padding: 30px;
+  font-size: 28px;
+  color: white;
+  animation: fadeIn 2s ease-in-out; /* Fade-in for no-trips */
+}
+
+hr {
+  width: 450px;
+  margin-bottom: 35px;
+}
+
+.trip-divider {
+  width: 650px;
+  margin-top: 60px;
+}
