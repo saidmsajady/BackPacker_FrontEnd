@@ -40,10 +40,12 @@
 .left-container h2 {
   font-size: 34px; 
   margin-bottom: 15px;
+  text-align: left;
 }
 
 .left-container p {
   font-size: 20px;
+  text-align: left;
   line-height: 1.6;
   margin-bottom: 20px;
   color: white;

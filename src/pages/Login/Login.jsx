@@ -11,14 +11,14 @@ const Login = () => {
         <br />
         <input type='text' placeholder='Password' className='input'></input>
         <br />
-        <button>Login</button>
+        <button className='login-page-btn'>Login</button>
+
+        <div className='account-login-container'>
         <p>Don't have an Account?</p>
         <Link to={'../Signup'} className='signup-home-btn'>
-            <button>Join Today</button>
+            <button className='login-page-signup-btn'>Join Today</button>
         </Link>
-      </div>
-      <div className='right-container'>
-
+        </div>
       </div>
     </>
   )

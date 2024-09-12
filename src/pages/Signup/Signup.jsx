@@ -6,7 +6,7 @@ function Signup() {
   return (
     <>
         <div className='left-container'>
-        <h1>Sign Up</h1>
+        <h1 className='signup-title'>Sign Up</h1>
         <input type='text' placeholder='First Name' className='input'></input>
         <br />
         <input type='text' placeholder='Last Name' className='input'></input>
@@ -16,11 +16,15 @@ function Signup() {
         <input type='text' placeholder='Password' className='input'></input>
         <br />
         <input type='text' placeholder='Retry Password' className='input'></input>
-        <button>Sign Up</button>
-        <p>Already have an Account?</p>
-        <Link to={'../Signup'} className='signup-home-btn'>
-            <button>Log In</button>
-        </Link>
+        <br />
+        <button className='signup-page-btn'>Sign Up</button>
+        
+        <div className='account-login-container'>
+            <p className='account-text'>Already have an Account?</p>
+            <Link to={'../Login'} className='signup-home-btn'>
+                <button className='signup-page-login-btn'>Log In</button>
+            </Link>
+        </div>
       </div>
     </>
   )
