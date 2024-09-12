@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './Trips.css'; 
 import { Link } from 'react-router-dom'; 
-import { FaBars } from 'react-icons/fa'; // Import the hamburger icon from react-icons
 
 const Trips = () => {
   const [trips, setTrips] = useState([]);
@@ -84,194 +82,181 @@ const Trips = () => {
     });
   };
 
-  const onDragEnd = (result) => {
-    if (!result.destination) return;
-
-    const items = Array.from(editFormData.countries);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-
+  const moveCountry = (index, direction) => {
+    const updatedCountries = [...editFormData.countries];
+    const [movedItem] = updatedCountries.splice(index, 1);
+    updatedCountries.splice(index + direction, 0, movedItem);
     setEditFormData((prevState) => ({
       ...prevState,
-      countries: items,
+      countries: updatedCountries,
     }));
   };
 
   return (
-    <>
-      <div className="trips-container">
-        {trips.length === 0 ? (
-          <div className="no-trips">
-            <p>No Trips Planned</p>
+    <div className="trips-container">
+      {trips.length === 0 ? (
+        <div className="no-trips">
+          <p>No Trips Planned</p>
+        </div>
+      ) : (
+        <>
+          <h2 className="first-title">See All Your Trips!</h2>
+          <div className="trips-list">
+            {trips.map((trip, index) => (
+              <React.Fragment key={trip._id}>
+                <div className="trip-card">
+                  {editingTrip === trip._id ? (
+                    <div className="edit-form">
+                      <input
+                        type="text"
+                        name="title"
+                        value={editFormData.title}
+                        onChange={(e) =>
+                          setEditFormData((prevState) => ({
+                            ...prevState,
+                            title: e.target.value,
+                          }))
+                        }
+                        placeholder="Title"
+                        className='edit-title'
+                      />
+                      <div>
+                        {editFormData.countries.map((country, index) => (
+                          <div key={index} className="edit-entry">
+                          {/* Up/Down buttons */}
+                          <div className="up-down-buttons">
+                            <button
+                              disabled={index === 0}
+                              onClick={() => moveCountry(index, -1)}
+                            >
+                              Move Up
+                            </button>
+                            <button
+                              disabled={index === editFormData.countries.length - 1}
+                              onClick={() => moveCountry(index, 1)}
+                            >
+                              Move Down
+                            </button>
+                          </div>
+                        
+                          {/* Country input with label on the left */}
+                          <div className="country-form-group-horizontal">
+                            <label>Country</label>
+                            <input
+                              type="text"
+                              name="country"
+                              value={country.country || ""}
+                              onChange={(e) => handleEditChange(index, e)}
+                              placeholder="Country"
+                            />
+                          </div>
+                        
+                          {/* Start Date input with label on the left */}
+                          <div className="country-form-group-horizontal">
+                            <label>Start Date</label>
+                            <input
+                              type="date"
+                              name="startDate"
+                              value={country.startDate ? country.startDate.split("T")[0] : ""}
+                              onChange={(e) => handleEditChange(index, e)}
+                            />
+                          </div>
+                        
+                          {/* End Date input with label on the left */}
+                          <div className="country-form-group-horizontal">
+                            <label>End Date</label>
+                            <input
+                              type="date"
+                              name="endDate"
+                              value={country.endDate ? country.endDate.split("T")[0] : ""}
+                              onChange={(e) => handleEditChange(index, e)}
+                            />
+                          </div>
+                        
+                          <button
+                            className="remove-button"
+                            type="button"
+                            onClick={() => removeCountry(index)}
+                          >
+                            Remove
+                          </button>
+                        </div>                        
+                        ))}
+                      </div>
+
+                      <button
+                        className="add-country-button"
+                        type="button"
+                        onClick={addCountry}
+                      >
+                        Add Destination
+                      </button>
+
+                      <button
+                        className="save-button"
+                        onClick={() => handleEditSubmit(trip._id)}
+                      >
+                        Save
+                      </button>
+
+                      <button
+                        className="cancel-button"
+                        onClick={() => setEditingTrip(null)}
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="trip-details">
+                      <h1 className="trip-title">- {trip.title} -</h1>
+
+                      <div className="trip-details-grid">
+                        {trip.countries.map((country, index) => (
+                          <div key={index} className="trip-country">
+                            <h2>{country.country}</h2>
+                            <p>
+                              <strong>From:</strong>{" "}
+                              {new Date(country.startDate).toDateString()}
+                              <br></br>
+                              <strong> To:</strong>{" "}
+                              {new Date(country.endDate).toDateString()}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div className="trip-actions">
+                        <button
+                          className="edit-button"
+                          onClick={() => startEditing(trip)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="delete-button"
+                          onClick={() => handleDelete(trip._id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                {index < trips.length - 1 && <hr className='trip-divider' />} {/* Adds hr between trips */}
+              </React.Fragment>
+            ))}
           </div>
-        ) : (
-          <>
-            <h2 className="first-title">See All Your Trips!</h2>
-            <div className="trips-list">
-              {trips.map((trip, index) => (
-                <React.Fragment key={trip._id}>
-                  <div className="trip-card">
-                    {editingTrip === trip._id ? (
-                      <div className="edit-form">
-                        <input
-                          type="text"
-                          name="title"
-                          value={editFormData.title}
-                          onChange={(e) =>
-                            setEditFormData((prevState) => ({
-                              ...prevState,
-                              title: e.target.value,
-                            }))
-                          }
-                          placeholder="Title"
-                          className='edit-title'
-                        />
-                        <DragDropContext onDragEnd={onDragEnd}>
-                          <Droppable droppableId="countries">
-                            {(provided) => (
-                              <div {...provided.droppableProps} ref={provided.innerRef}>
-                                {editFormData.countries.map((country, index) => (
-                                  <Draggable
-                                    key={index}
-                                    draggableId={index.toString()}
-                                    index={index}
-                                  >
-                                    {(provided) => (
-                                      <div
-                                        className="edit-entry"
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        ref={provided.innerRef}
-                                      >
-                                        {/* Hamburger icon for dragging */}
-                                        <div className="drag-handle">
-                                          <FaBars />
-                                        </div>
-
-                                        {/* Country input with label on the left */}
-                                        <div className="country-form-group-horizontal">
-                                          <label>Country</label>
-                                          <input
-                                            type="text"
-                                            name="country"
-                                            value={country.country || ""}
-                                            onChange={(e) => handleEditChange(index, e)}
-                                            placeholder="Country"
-                                          />
-                                        </div>
-
-                                        {/* Start Date input with label on the left */}
-                                        <div className="country-form-group-horizontal">
-                                          <label>Start Date</label>
-                                          <input
-                                            type="date"
-                                            name="startDate"
-                                            value={country.startDate ? country.startDate.split("T")[0] : ""}
-                                            onChange={(e) => handleEditChange(index, e)}
-                                          />
-                                        </div>
-
-                                        {/* End Date input with label on the left */}
-                                        <div className="country-form-group-horizontal">
-                                          <label>End Date</label>
-                                          <input
-                                            type="date"
-                                            name="endDate"
-                                            value={country.endDate ? country.endDate.split("T")[0] : ""}
-                                            onChange={(e) => handleEditChange(index, e)}
-                                          />
-
-                                        </div>
-
-                                        <button
-                                          className="remove-button"
-                                          type="button"
-                                          onClick={() => removeCountry(index)}
-                                        >
-                                          Remove
-                                        </button>
-                                      </div>
-                                    )}
-                                  </Draggable>
-                                ))}
-                                {provided.placeholder}
-                              </div>
-                            )}
-                          </Droppable>
-                        </DragDropContext>
-
-                        <button
-                          className="add-country-button"
-                          type="button"
-                          onClick={addCountry}
-                        >
-                          Add Destination
-                        </button>
-
-                        <button
-                          className="save-button"
-                          onClick={() => handleEditSubmit(trip._id)}
-                        >
-                          Save
-                        </button>
-
-                        <button
-                          className="cancel-button"
-                          onClick={() => setEditingTrip(null)}
-                        >
-                          Cancel
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="trip-details">
-                        <h1 className="trip-title">- {trip.title} -</h1>
-
-                        <div className="trip-details-grid">
-                          {trip.countries.map((country, index) => (
-                            <div key={index} className="trip-country">
-                              <h2>{country.country}</h2>
-                              <p>
-                                <strong>From:</strong>{" "}
-                                {new Date(country.startDate).toDateString()}
-                                <br></br>
-                                <strong> To:</strong>{" "}
-                                {new Date(country.endDate).toDateString()}
-                              </p>
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="trip-actions">
-                          <button
-                            className="edit-button"
-                            onClick={() => startEditing(trip)}
-                          >
-                            Edit
-                          </button>
-                          <button
-                            className="delete-button"
-                            onClick={() => handleDelete(trip._id)}
-                          >
-                            Delete
-                          </button>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  {index < trips.length - 1 && <hr className='trip-divider'/>} {/* Adds hr between trips */} 
-                </React.Fragment>
-              ))}
-            </div>
-            <hr  className='last-hr'/> {/* Horizontal line to separate the list and the Create Trip button */}
-            <div className="create-trip-container">
-              <Link to="/Create">
-                <button className="create-trip-button">Create Trip</button>
-              </Link>
-            </div>
-          </>
-        )}
-      </div>
-    </>
+          <hr className='last-hr' /> {/* Horizontal line to separate the list and the Create Trip button */}
+          <div className="create-trip-container">
+            <Link to="/Create">
+              <button className="create-trip-button">
+                Create Trip
+              </button>
+            </Link>
+          </div>
+        </>
+      )}
+    </div>
   );
 };
 

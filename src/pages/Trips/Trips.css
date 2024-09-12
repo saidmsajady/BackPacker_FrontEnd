@@ -202,7 +202,7 @@ button {
 
 /* Remove Button */
 .remove-button {
-  margin-left: 30px;
+  margin-left: 45px;
   background-color: #dc3545;
   color: white;
   border: none;
@@ -276,8 +276,8 @@ button {
   margin-bottom: 10px;
   cursor: grab;
   transition: box-shadow 0.2s ease;
-  width: 1205px;
-  margin-left: -85px;
+  width: 1358px;
+  margin-left: -160px;
 }
 
 .edit-entry:hover {
@@ -323,4 +323,36 @@ hr {
 .trip-divider {
   width: 650px;
   margin-top: 60px;
+}
+
+/* Flexbox layout for Up/Down buttons */
+.up-down-buttons {
+  display: flex;
+  gap: 10px; /* Space between buttons */
+  margin-right: 10px; /* Adjust spacing as needed */
+}
+
+/* Button styling */
+.up-down-buttons button {
+  padding: 5px 10px;
+  font-size: 14px;
+  width: 85px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  cursor: pointer;
+  border: 1px solid black; /* Adds a solid black border */
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+}
+
+/* Hover effect for buttons */
+.up-down-buttons button:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+  transform: scale(1.05); /* Slightly enlarges button on hover */
+}
+
+/* Disabled button styling */
+.up-down-buttons button:disabled {
+  background-color: #e0e0e0; /* Grey background for disabled state */
+  cursor: not-allowed; /* Shows 'not allowed' cursor on disabled buttons */
+  border-color: #0c0c0c; /* Light grey border for disabled state */
 }
