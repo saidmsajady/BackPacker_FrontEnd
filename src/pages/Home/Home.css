@@ -84,7 +84,7 @@ h1 + h1 {
 }
 
 .signup-home-btn button:hover {
-    transform: scale(1.1); /* Retain hover grow effect */
+    transform: scale(1.5); /* Retain hover grow effect */
     background-color: #128996;
 }
 
@@ -104,25 +104,29 @@ h1 + h1 {
 }
 
 /* Home Icon */
-.home-flex-container img {
+.home-icon {
     width: 450px;
     height: auto;
     opacity: 0;
-    animation: fadeIn 1.5s forwards;
+    animation: fadeInOpacity 1.5s forwards;
     animation-delay: 1s; /* Same delay as site-bio and button */
-    transform: none; /* Reset transform after the fade-in animation completes */
-    transition: transform 0.6s ease; /* Ensure smooth hover transition */
-}
-
-/* Separated hover effect for the image */
-.home-flex-container img:hover {
-    transform: scale(1.2) perspective(1000px) rotateY(15deg) rotateX(5deg); /* Tilt effect on hover */
-}
-
-/* Separate transition for hover effect */
-.home-icon {
     border-radius: 25%;
     border: 1px solid white;
     padding: 20px;
-    transition: transform 0.6s ease;
+    transform-origin: center;
+    transition: transform 0.6s ease;    
+}
+
+/* Animate only opacity for the fade-in effect */
+@keyframes fadeInOpacity {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.home-icon:hover {
+    transform: scale(1.2) perspective(1000px) rotateY(15deg) rotateX(5deg); /* Tilt effect on hover */
 }
