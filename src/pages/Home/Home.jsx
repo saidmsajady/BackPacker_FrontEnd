@@ -22,7 +22,7 @@ const Home = () => {
             keep track of your travels and never miss a destination. <br />
             Sign in or sign up to begin your journey!
           </h2>
-          <Link to={'../Account/SignUp.jsx'} className='signup-home-btn'>
+          <Link to={'../Signup'} className='signup-home-btn'>
             <button>Join Today</button>
           </Link>
         </div>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './Trips.css'; 
+import { Link } from 'react-router-dom'; // Import Link for the Create Trip button
 
 const Trips = () => {
   const [trips, setTrips] = useState([]);
@@ -35,7 +36,7 @@ const Trips = () => {
     try {
       const updatedTrip = {
         ...editFormData,
-        lastEdited: new Date(), 
+        lastEdited: new Date(),
       };
 
       const response = await axios.put(`http://localhost:3000/trips/${id}`, updatedTrip);
@@ -82,6 +83,19 @@ const Trips = () => {
     });
   };
 
+  const onDragEnd = (result) => {
+    if (!result.destination) return;
+
+    const items = Array.from(editFormData.countries);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setEditFormData((prevState) => ({
+      ...prevState,
+      countries: items,
+    }));
+  };
+
   return (
     <>
       <div className="trips-container">
@@ -111,39 +125,61 @@ const Trips = () => {
                           placeholder="Title"
                           className='edit-title'
                         />
-                        {editFormData.countries.map((country, index) => (
-                          <div key={index} className="edit-entry">
-                            <input
-                              type="text"
-                              name="country"
-                              value={country.country}
-                              onChange={(e) => handleEditChange(index, e)}
-                              placeholder="Country"
-                            />
+                        <DragDropContext onDragEnd={onDragEnd}>
+                          <Droppable droppableId="countries">
+                            {(provided) => (
+                              <div {...provided.droppableProps} ref={provided.innerRef}>
+                                {editFormData.countries.map((country, index) => (
+                                  <Draggable
+                                    key={index}
+                                    draggableId={index.toString()}
+                                    index={index}
+                                  >
+                                    {(provided) => (
+                                      <div
+                                        className="edit-entry"
+                                        {...provided.draggableProps}
+                                        {...provided.dragHandleProps}
+                                        ref={provided.innerRef}
+                                      >
+                                        <input
+                                          type="text"
+                                          name="country"
+                                          value={country.country}
+                                          onChange={(e) => handleEditChange(index, e)}
+                                          placeholder="Country"
+                                        />
 
-                            <input
-                              type="date"
-                              name="startDate"
-                              value={country.startDate.split("T")[0]}
-                              onChange={(e) => handleEditChange(index, e)}
-                            />
+                                        <input
+                                          type="date"
+                                          name="startDate"
+                                          value={country.startDate.split("T")[0]}
+                                          onChange={(e) => handleEditChange(index, e)}
+                                        />
 
-                            <input
-                              type="date"
-                              name="endDate"
-                              value={country.endDate.split("T")[0]}
-                              onChange={(e) => handleEditChange(index, e)}
-                            />
+                                        <input
+                                          type="date"
+                                          name="endDate"
+                                          value={country.endDate.split("T")[0]}
+                                          onChange={(e) => handleEditChange(index, e)}
+                                        />
 
-                            <button
-                              className="remove-button"
-                              type="button"
-                              onClick={() => removeCountry(index)}
-                            >
-                              Remove
-                            </button>
-                          </div>
-                        ))}
+                                        <button
+                                          className="remove-button"
+                                          type="button"
+                                          onClick={() => removeCountry(index)}
+                                        >
+                                          Remove
+                                        </button>
+                                      </div>
+                                    )}
+                                  </Draggable>
+                                ))}
+                                {provided.placeholder}
+                              </div>
+                            )}
+                          </Droppable>
+                        </DragDropContext>
 
                         <button
                           className="add-country-button"
@@ -203,18 +239,18 @@ const Trips = () => {
                       </div>
                     )}
                   </div>
-                  {index < trips.length - 1 && <hr className='trip-divider'/>} {/* This is where the hr is added */}
+                  {index < trips.length - 1 && <hr className='trip-divider'/>} {/* Adds hr between trips */}
                 </React.Fragment>
               ))}
             </div>
+            <hr  className='last-hr'/> {/* Horizontal line to separate the list and the Create Trip button */}
+            <div className="create-trip-container">
+              <Link to="/Create">
+                <button className="create-trip-button">Create Trip</button>
+              </Link>
+            </div>
           </>
         )}
-        <hr />
-        <div className="create-trip-container">
-          <Link to="/Create">
-            <button className="create-trip-button">Create Trip</button>
-          </Link>
-        </div>
       </div>
     </>
   );

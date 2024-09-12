@@ -10,17 +10,17 @@ const Navbar = () => {
         <NavLink to={'/'} className="logo-link"><img src={logo} alt='ExploreMate Logo' className='logo-img' /></NavLink>
 
         {/* Navigation Links */}
-        <NavLink exact to={'/'} activeClassName="active">Home</NavLink>
-        <NavLink to={'/Trips'} activeClassName="active">Trips</NavLink>
-        <NavLink to={'/Create'} activeClassName="active">Create</NavLink>
-        <NavLink to={'/Countries'} activeClassName="active">Countries</NavLink>
-        <NavLink to={'/Contact'} activeClassName="active">Contact</NavLink>
+        <NavLink to={'/'} className={({ isActive }) => (isActive ? 'active' : '')}>Home</NavLink>
+        <NavLink to={'/Trips'} className={({ isActive }) => (isActive ? 'active' : '')}>Trips</NavLink>
+        <NavLink to={'/Create'} className={({ isActive }) => (isActive ? 'active' : '')}>Create</NavLink>
+        <NavLink to={'/Countries'} className={({ isActive }) => (isActive ? 'active' : '')}>Countries</NavLink>
+        <NavLink to={'/Contact'} className={({ isActive }) => (isActive ? 'active' : '')}>Contact</NavLink>
       </div>
 
       <div className='right-nav'>
         {/* Login and Sign Up buttons */}
-        <NavLink to={'/Account'} className='login-btn'>Login</NavLink> 
-        <NavLink to={'/Account'} className='signup-btn'>Sign Up</NavLink>
+        <NavLink to={'/Login'} className='login-btn'>Login</NavLink> 
+        <NavLink to={'/Signup'} className='signup-btn'>Sign Up</NavLink>
       </div>
     </nav>
   );
