@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import './Trips.css'; 
-import { Link } from 'react-router-dom'; // Import Link for the Create Trip button
+import { Link } from 'react-router-dom'; 
+import { FaBars } from 'react-icons/fa'; // Import the hamburger icon from react-icons
 
 const Trips = () => {
   const [trips, setTrips] = useState([]);
@@ -142,27 +143,45 @@ const Trips = () => {
                                         {...provided.dragHandleProps}
                                         ref={provided.innerRef}
                                       >
-                                        <input
-                                          type="text"
-                                          name="country"
-                                          value={country.country}
-                                          onChange={(e) => handleEditChange(index, e)}
-                                          placeholder="Country"
-                                        />
+                                        {/* Hamburger icon for dragging */}
+                                        <div className="drag-handle">
+                                          <FaBars />
+                                        </div>
 
-                                        <input
-                                          type="date"
-                                          name="startDate"
-                                          value={country.startDate.split("T")[0]}
-                                          onChange={(e) => handleEditChange(index, e)}
-                                        />
+                                        {/* Country input with label on the left */}
+                                        <div className="country-form-group-horizontal">
+                                          <label>Country</label>
+                                          <input
+                                            type="text"
+                                            name="country"
+                                            value={country.country || ""}
+                                            onChange={(e) => handleEditChange(index, e)}
+                                            placeholder="Country"
+                                          />
+                                        </div>
 
-                                        <input
-                                          type="date"
-                                          name="endDate"
-                                          value={country.endDate.split("T")[0]}
-                                          onChange={(e) => handleEditChange(index, e)}
-                                        />
+                                        {/* Start Date input with label on the left */}
+                                        <div className="country-form-group-horizontal">
+                                          <label>Start Date</label>
+                                          <input
+                                            type="date"
+                                            name="startDate"
+                                            value={country.startDate ? country.startDate.split("T")[0] : ""}
+                                            onChange={(e) => handleEditChange(index, e)}
+                                          />
+                                        </div>
+
+                                        {/* End Date input with label on the left */}
+                                        <div className="country-form-group-horizontal">
+                                          <label>End Date</label>
+                                          <input
+                                            type="date"
+                                            name="endDate"
+                                            value={country.endDate ? country.endDate.split("T")[0] : ""}
+                                            onChange={(e) => handleEditChange(index, e)}
+                                          />
+
+                                        </div>
 
                                         <button
                                           className="remove-button"
@@ -239,7 +258,7 @@ const Trips = () => {
                       </div>
                     )}
                   </div>
-                  {index < trips.length - 1 && <hr className='trip-divider'/>} {/* Adds hr between trips */}
+                  {index < trips.length - 1 && <hr className='trip-divider'/>} {/* Adds hr between trips */} 
                 </React.Fragment>
               ))}
             </div>
