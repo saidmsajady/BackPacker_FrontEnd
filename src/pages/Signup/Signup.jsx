@@ -1,33 +1,90 @@
-import React from 'react'
-import { Link } from 'react-router-dom'; 
-import './Signup.css'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
+import './Signup.css';
 
-function Signup() {
+const Signup = ({ setIsSignedIn }) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+    }
+
+    try {
+      const res = await fetch('http://localhost:3000/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username: `${firstName} ${lastName}`, email, password }),
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        localStorage.setItem('token', data.token); // Store JWT token
+        setIsSignedIn(true); // Update authentication state
+        navigate('/'); // Redirect to home or dashboard
+      } else {
+        alert(data.message || 'Signup failed');
+      }
+    } catch (error) {
+      console.error('Signup Error:', error);
+      alert('Signup failed. Please try again.');
+    }
+  };
+
   return (
-    <>
-        <div className='left-container'>
-        <h1 className='signup-title'>Sign Up</h1>
-        <input type='text' placeholder='First Name' className='input'></input>
-        <br />
-        <input type='text' placeholder='Last Name' className='input'></input>
-        <br />
-        <input type='text' placeholder='Email' className='input'></input>
-        <br />
-        <input type='text' placeholder='Password' className='input'></input>
-        <br />
-        <input type='text' placeholder='Retry Password' className='input'></input>
-        <br />
-        <button className='signup-page-btn'>Sign Up</button>
-        
-        <div className='account-login-container'>
-            <p className='account-text'>Already have an Account?</p>
-            <Link to={'../Login'} className='signup-home-btn'>
-                <button className='signup-page-login-btn'>Log In</button>
-            </Link>
-        </div>
-      </div>
-    </>
-  )
-}
+    <div className='left-container'>
+      <h1 className='signup-title'>Sign Up</h1>
+      <input
+        type='text'
+        placeholder='First Name'
+        className='input'
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+      />
+      <br />
+      <input
+        type='text'
+        placeholder='Last Name'
+        className='input'
+        value={lastName}
+        onChange={(e) => setLastName(e.target.value)}
+      />
+      <br />
+      <input
+        type='email'
+        placeholder='Email'
+        className='input'
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <br />
+      <input
+        type='password'
+        placeholder='Password'
+        className='input'
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <br />
+      <input
+        type='password'
+        placeholder='Retry Password'
+        className='input'
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+      />
+      <br />
+      <button className='signup-page-btn' onClick={handleSignup}>Sign Up</button>
+    </div>
+  );
+};
 
-export default Signup
+export default Signup;

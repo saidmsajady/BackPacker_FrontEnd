@@ -33,35 +33,58 @@ const Trips = () => {
 
   const handleEditSubmit = async (id) => {
     try {
+      const token = localStorage.getItem('token'); // Get token from localStorage
+      if (!token) {
+        throw new Error('No token found. Please log in.');
+      }
+  
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, // Add token to the request headers
+        },
+      };
+  
       const updatedTrip = {
         ...editFormData,
         lastEdited: new Date(),
       };
-
-      const response = await axios.put(`http://localhost:3000/trips/${id}`, updatedTrip);
-
+  
+      const response = await axios.put(`http://localhost:3000/trips/${id}`, updatedTrip, config); // Include config with headers
+  
       setTrips((prevTrips) => {
         const updatedTrips = prevTrips.map((trip) =>
           trip._id === id ? response.data.trip : trip
         );
-
+  
         return updatedTrips.sort((a, b) => new Date(b.lastEdited) - new Date(a.lastEdited));
       });
-
+  
       setEditingTrip(null);
     } catch (error) {
       console.error('Error updating trip:', error);
     }
-  };
+  };  
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/trips/${id}`);
+      const token = localStorage.getItem('token'); // Get token from localStorage
+      if (!token) {
+        throw new Error('No token found. Please log in.');
+      }
+  
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, // Add token to the request headers
+        },
+      };
+  
+      await axios.delete(`http://localhost:3000/trips/${id}`, config); // Include config with headers
       setTrips(trips.filter(trip => trip._id !== id));
     } catch (error) {
       console.error('Error deleting trip:', error);
     }
   };
+  
 
   const startEditing = (trip) => {
     setEditingTrip(trip._id);

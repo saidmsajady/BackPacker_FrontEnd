@@ -30,7 +30,8 @@ const Create = () => {
   // Handler for form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log('Submitting the form'); // Debug log
+  
     const newTrip = {
       title,
       countries: countries.map(({ country, startDate, endDate }) => ({
@@ -39,16 +40,27 @@ const Create = () => {
         endDate: new Date(endDate).toISOString(),
       })),
     };
-
+  
     try {
-      // Post the new trip data to the server
-      await axios.post('http://localhost:3000/trips', newTrip);
-      console.log('Trip created:', newTrip);
+      const token = localStorage.getItem('token'); // Get the token from localStorage
+      if (!token) {
+        throw new Error('No token found. Please login again.');
+      }
+  
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+        },
+      };
+  
+      // Post the new trip data to the server with the token
+      const response = await axios.post('http://localhost:3000/trips', newTrip, config);
+      console.log('Trip created:', response.data); // Log the response
       navigate('/Trips');
     } catch (error) {
       console.error('There was an error creating the trip!', error);
     }
-  };
+  };  
 
   return (
     <>
