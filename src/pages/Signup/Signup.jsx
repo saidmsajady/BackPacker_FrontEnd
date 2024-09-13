@@ -22,12 +22,13 @@ const Signup = ({ setIsSignedIn }) => {
       const res = await fetch('http://localhost:3000/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username: `${firstName} ${lastName}`, email, password }),
+        body: JSON.stringify({ firstName, lastName, email, password }), // Send firstName and lastName separately
       });
 
       const data = await res.json();
       if (res.ok) {
         localStorage.setItem('token', data.token); // Store JWT token
+        localStorage.setItem('firstName', data.user.firstName); // Store user's first name
         setIsSignedIn(true); // Update authentication state
         navigate('/'); // Redirect to home or dashboard
       } else {

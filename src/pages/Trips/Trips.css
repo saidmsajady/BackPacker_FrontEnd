@@ -356,3 +356,7 @@ hr {
   cursor: not-allowed; /* Shows 'not allowed' cursor on disabled buttons */
   border-color: #0c0c0c; /* Light grey border for disabled state */
 }
+
+.from-to {
+  text-decoration: underline;
+}

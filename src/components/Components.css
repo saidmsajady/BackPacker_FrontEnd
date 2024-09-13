@@ -44,8 +44,6 @@ nav a:not(.logo-link):not(.login-btn):hover {
     color: white;
 }
 
-
-
 .logo-img {
     width: 70px; 
     height: auto;
@@ -100,4 +98,12 @@ nav a:not(.logo-link):not(.login-btn):hover {
     transition: transform 0.3s ease-in-out; 
     background-color: #128996; 
     color: white;
+}
+
+.welcome-message {
+    color: white;
+    margin-right: 40px;
+    font-family: Gill Sans, Gill Sans MT, Calibri, Trebuchet MS, sans-serif;
+    font-size: 30px;
+    text-decoration: underline;
 }

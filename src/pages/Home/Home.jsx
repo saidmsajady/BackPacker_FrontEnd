@@ -10,7 +10,7 @@ const wrapLetters = (text) => {
   ));
 };
 
-const Home = () => {
+const Home = ({ isSignedIn }) => { // Pass the isSignedIn prop to this component
   return (
     <>
       <div className="home-flex-container">
@@ -20,11 +20,21 @@ const Home = () => {
           <h2 className='site-bio'>
             Whether you're conquering mountains or finding hidden gems, <br />
             keep track of your travels and never miss a destination. <br />
-            Sign in or sign up to begin your journey!
+            {isSignedIn 
+              ? 'Create your next trip and continue exploring!' 
+              : 'Sign in or sign up to begin your journey!'
+            }
           </h2>
-          <Link to={'../Signup'} className='signup-home-btn'>
-            <button>Join Today</button>
-          </Link>
+          
+          {isSignedIn ? (
+            <Link to={'../Create'} className='signup-home-btn'>
+              <button>Create Trip</button>
+            </Link>
+          ) : (
+            <Link to={'../Signup'} className='signup-home-btn'>
+              <button>Join Today</button>
+            </Link>
+          )}
         </div>
         <div>
           <img src={icon} alt="Home Icon" className='home-icon' />

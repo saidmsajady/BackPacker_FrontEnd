@@ -1,12 +1,25 @@
 import './Components.css';
 import logo from './Logo.jpg'; 
 import { NavLink, useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
 
 const Navbar = ({ isSignedIn, setIsSignedIn }) => {
   const navigate = useNavigate();
+  const [firstName, setFirstName] = useState('');
+
+  useEffect(() => {
+    if (isSignedIn) {
+      const storedFirstName = localStorage.getItem('firstName');
+      console.log('First name from localStorage:', storedFirstName); // Debugging: Log the retrieved name
+      setFirstName(storedFirstName || ''); // Set the first name or empty if not found
+    } else {
+      setFirstName(''); // Clear the first name on logout
+    }
+  }, [isSignedIn]);
 
   const handleLogout = () => {
     localStorage.removeItem('token'); // Remove token
+    localStorage.removeItem('firstName'); // Remove first name from localStorage
     setIsSignedIn(false); // Set signed-in status to false
     navigate('/login'); // Redirect to login page after logout
   };
@@ -27,7 +40,10 @@ const Navbar = ({ isSignedIn, setIsSignedIn }) => {
 
       <div className='right-nav'>
         {isSignedIn ? (
-          <button className='logout-btn' onClick={handleLogout}>Logout</button>
+          <>
+            <span className='welcome-message'>Hello, {firstName}!</span> 
+            <button className='logout-btn' onClick={handleLogout}>Logout</button>
+          </>
         ) : (
           <>
             <NavLink to='/Login' className='login-btn'>Login</NavLink>

@@ -2,6 +2,7 @@
 .left-container {
     margin: 0 auto; /* Centers the container horizontally */
     border-radius: 10px;
+    margin-top: 75px;
     text-align: center; /* Center-aligns text */
 }
 
@@ -43,7 +44,6 @@
     align-items: center;
     justify-content: center; /* Center-aligns the container */
     gap: 10px; /* Adds space between text and button */
-    margin-top: 20px;
 }
 
 .signup-page-login-btn {

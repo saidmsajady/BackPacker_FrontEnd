@@ -20,6 +20,7 @@ const Login = ({ setIsSignedIn }) => {
       const data = await res.json();
       if (res.ok) {
         localStorage.setItem('token', data.token); // Store JWT token
+        localStorage.setItem('firstName', data.user.firstName); // Store user's first name
         setIsSignedIn(true); // Update authentication state
         navigate('/'); // Redirect to home or dashboard
       } else {

@@ -11,30 +11,29 @@ const Trips = () => {
     countries: [{ country: '', startDate: '', endDate: '' }]
   });
 
+  const [isSignedIn, setIsSignedIn] = useState(false); // Track if user is signed in
+
   useEffect(() => {
-    const fetchTrips = async () => {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        console.error('No token found. Cannot fetch trips.');
-        return;
-      }
-
-      try {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`, // Include token in headers
-          },
-        };
-        
-        const response = await axios.get('http://localhost:3000/trips', config);
-        setTrips(response.data.trips);
-      } catch (error) {
-        console.error('Error fetching trips:', error);
-      }
-    };
-
-    fetchTrips();
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsSignedIn(true); // User is signed in if token exists
+      fetchTrips(token); // Fetch trips if signed in
+    }
   }, []);
+
+  const fetchTrips = async (token) => {
+    try {
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`, // Include token in headers
+        },
+      };
+      const response = await axios.get('http://localhost:3000/trips', config);
+      setTrips(response.data.trips);
+    } catch (error) {
+      console.error('Error fetching trips:', error);
+    }
+  };
 
   const handleEditChange = (index, e) => {
     const { name, value } = e.target;
@@ -131,14 +130,20 @@ const Trips = () => {
     <div className="trips-container">
       {trips.length === 0 ? (
         <div className="no-trips">
-          <p>No Trips Planned</p>
-          <div className="create-trip-container">
-            <Link to="/Create">
-              <button className="create-trip-button">
-                Create Trip
-              </button>
-            </Link>
-          </div>
+          {isSignedIn ? (
+            <>
+              <p>No Trips Planned</p>
+              <div className="create-trip-container">
+                <Link to="/Create">
+                  <button className="create-trip-button">
+                    Create Trip
+                  </button>
+                </Link>
+              </div>
+            </>
+          ) : (
+            <p>Please Make Sure You're Signed-In To Create Trips!</p>
+          )}
         </div>
       ) : (
         <>
@@ -253,10 +258,10 @@ const Trips = () => {
                           <div key={index} className="trip-country">
                             <h2>{country.country}</h2>
                             <p>
-                              <strong>From:</strong>{" "}
+                              <strong> <span className='from-to'>From</span>:</strong>{" "}
                               {new Date(country.startDate).toDateString()}
                               <br></br>
-                              <strong> To:</strong>{" "}
+                              <strong className='to-styling'> <span className='from-to'>To</span>:</strong>{" "}
                               {new Date(country.endDate).toDateString()}
                             </p>
                           </div>
@@ -299,3 +304,5 @@ const Trips = () => {
 };
 
 export default Trips;
+
+                   
