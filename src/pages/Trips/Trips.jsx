@@ -13,8 +13,20 @@ const Trips = () => {
 
   useEffect(() => {
     const fetchTrips = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('No token found. Cannot fetch trips.');
+        return;
+      }
+
       try {
-        const response = await axios.get('http://localhost:3000/trips');
+        const config = {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include token in headers
+          },
+        };
+        
+        const response = await axios.get('http://localhost:3000/trips', config);
         setTrips(response.data.trips);
       } catch (error) {
         console.error('Error fetching trips:', error);
@@ -32,15 +44,16 @@ const Trips = () => {
   };
 
   const handleEditSubmit = async (id) => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No token found. Cannot update trip.');
+      return;
+    }
+
     try {
-      const token = localStorage.getItem('token'); // Get token from localStorage
-      if (!token) {
-        throw new Error('No token found. Please log in.');
-      }
-  
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`, // Add token to the request headers
+          Authorization: `Bearer ${token}`, // Include token in headers
         },
       };
   
@@ -49,13 +62,12 @@ const Trips = () => {
         lastEdited: new Date(),
       };
   
-      const response = await axios.put(`http://localhost:3000/trips/${id}`, updatedTrip, config); // Include config with headers
+      const response = await axios.put(`http://localhost:3000/trips/${id}`, updatedTrip, config);
   
       setTrips((prevTrips) => {
         const updatedTrips = prevTrips.map((trip) =>
           trip._id === id ? response.data.trip : trip
         );
-  
         return updatedTrips.sort((a, b) => new Date(b.lastEdited) - new Date(a.lastEdited));
       });
   
@@ -66,25 +78,25 @@ const Trips = () => {
   };  
 
   const handleDelete = async (id) => {
-    try {
-      const token = localStorage.getItem('token'); // Get token from localStorage
-      if (!token) {
-        throw new Error('No token found. Please log in.');
-      }
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No token found. Cannot delete trip.');
+      return;
+    }
   
+    try {
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`, // Add token to the request headers
+          Authorization: `Bearer ${token}`, // Include token in headers
         },
       };
   
-      await axios.delete(`http://localhost:3000/trips/${id}`, config); // Include config with headers
+      await axios.delete(`http://localhost:3000/trips/${id}`, config);
       setTrips(trips.filter(trip => trip._id !== id));
     } catch (error) {
       console.error('Error deleting trip:', error);
     }
-  };
-  
+  };  
 
   const startEditing = (trip) => {
     setEditingTrip(trip._id);
@@ -120,6 +132,13 @@ const Trips = () => {
       {trips.length === 0 ? (
         <div className="no-trips">
           <p>No Trips Planned</p>
+          <div className="create-trip-container">
+            <Link to="/Create">
+              <button className="create-trip-button">
+                Create Trip
+              </button>
+            </Link>
+          </div>
         </div>
       ) : (
         <>
@@ -146,7 +165,6 @@ const Trips = () => {
                       <div>
                         {editFormData.countries.map((country, index) => (
                           <div key={index} className="edit-entry">
-                          {/* Up/Down buttons */}
                           <div className="up-down-buttons">
                             <button
                               disabled={index === 0}
@@ -161,8 +179,7 @@ const Trips = () => {
                               Move Down
                             </button>
                           </div>
-                        
-                          {/* Country input with label on the left */}
+
                           <div className="country-form-group-horizontal">
                             <label>Country</label>
                             <input
@@ -173,8 +190,7 @@ const Trips = () => {
                               placeholder="Country"
                             />
                           </div>
-                        
-                          {/* Start Date input with label on the left */}
+
                           <div className="country-form-group-horizontal">
                             <label>Start Date</label>
                             <input
@@ -184,8 +200,7 @@ const Trips = () => {
                               onChange={(e) => handleEditChange(index, e)}
                             />
                           </div>
-                        
-                          {/* End Date input with label on the left */}
+
                           <div className="country-form-group-horizontal">
                             <label>End Date</label>
                             <input
@@ -195,7 +210,7 @@ const Trips = () => {
                               onChange={(e) => handleEditChange(index, e)}
                             />
                           </div>
-                        
+
                           <button
                             className="remove-button"
                             type="button"

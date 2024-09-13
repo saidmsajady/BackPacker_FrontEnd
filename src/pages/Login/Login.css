@@ -18,3 +18,10 @@
     background-color: #5931a3 !important; /* Darker purple on hover */
     transform: scale(1.05);
 }
+
+.left-container {
+    border: 2px solid white;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}

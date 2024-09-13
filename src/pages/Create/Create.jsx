@@ -4,12 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import './Create.css';
 
 const Create = () => {
-  // State variables for the trip title and countries array
   const [title, setTitle] = useState('');
   const [countries, setCountries] = useState([{ country: '', startDate: '', endDate: '' }]);
   const navigate = useNavigate();
 
-  // Handler for input changes in the countries array
   const handleChange = (index, e) => {
     const { name, value } = e.target;
     const newCountries = [...countries];
@@ -17,20 +15,22 @@ const Create = () => {
     setCountries(newCountries);
   };
 
-  // Handler to add a new country entry
   const handleAddCountry = () => {
     setCountries([...countries, { country: '', startDate: '', endDate: '' }]);
   };
 
-  // Handler to remove a country entry
   const handleRemoveCountry = (index) => {
     setCountries(countries.filter((_, i) => i !== index));
   };
 
-  // Handler for form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Submitting the form'); // Debug log
+  
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.error('No token found, cannot create trip');
+      return;
+    }
   
     const newTrip = {
       title,
@@ -42,20 +42,17 @@ const Create = () => {
     };
   
     try {
-      const token = localStorage.getItem('token'); // Get the token from localStorage
-      if (!token) {
-        throw new Error('No token found. Please login again.');
-      }
+      console.log('Submitting the form');
   
       const config = {
         headers: {
-          Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+          Authorization: `Bearer ${token}`, // Pass token in headers
         },
       };
   
-      // Post the new trip data to the server with the token
       const response = await axios.post('http://localhost:3000/trips', newTrip, config);
-      console.log('Trip created:', response.data); // Log the response
+  
+      console.log('Trip created:', response.data.trip);
       navigate('/Trips');
     } catch (error) {
       console.error('There was an error creating the trip!', error);
@@ -71,18 +68,14 @@ const Create = () => {
           <input className='title-input' placeholder='Enter Your Trip Title' type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
         </div>
 
-        {/* Map over the countries array to render input fields for each country */}
         {countries.map((_, index) => (
           <div key={index} className="trip-entry">
             <label>Destination:</label>
             <input placeholder='Blank' type="text" name="country" value={countries[index].country} onChange={(e) => handleChange(index, e)} required />
-
             <label>Start Date:</label>
             <input type="date" name="startDate" value={countries[index].startDate} onChange={(e) => handleChange(index, e)} required />
-            
             <label>End Date:</label>
             <input type="date" name="endDate" value={countries[index].endDate} onChange={(e) => handleChange(index, e)} required />
-            
             <button type="button" onClick={() => handleRemoveCountry(index)}>Remove</button>
           </div>
         ))}
