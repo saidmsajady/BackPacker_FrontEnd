@@ -16,10 +16,9 @@ function App() {
   const [isSignedIn, setIsSignedIn] = useState(false); // Manage authentication state
   const navigate = useNavigate();
 
-  // Check if token is present in localStorage when the app starts
   useEffect(() => {
     const token = localStorage.getItem('token');
-    setIsSignedIn(!!token); // Set state based on whether the token exists
+    setIsSignedIn(!!token); 
   }, []);
 
   return (
