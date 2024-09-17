@@ -28,7 +28,7 @@ const Trips = () => {
           Authorization: `Bearer ${token}`, // Include token in headers
         },
       };
-      const response = await axios.get('http://localhost:3000/trips', config);
+      const response = await axios.get('https://backpacker-backend.onrender.com/trips', config);
       setTrips(response.data.trips);
     } catch (error) {
       console.error('Error fetching trips:', error);
@@ -61,7 +61,7 @@ const Trips = () => {
         lastEdited: new Date(),
       };
   
-      const response = await axios.put(`http://localhost:3000/trips/${id}`, updatedTrip, config);
+      const response = await axios.put(`https://backpacker-backend.onrender.com/trips/${id}`, updatedTrip, config);
   
       setTrips((prevTrips) => {
         const updatedTrips = prevTrips.map((trip) =>
@@ -90,7 +90,7 @@ const Trips = () => {
         },
       };
   
-      await axios.delete(`http://localhost:3000/trips/${id}`, config);
+      await axios.delete(`https://backpacker-backend.onrender.com/trips/${id}`, config);
       setTrips(trips.filter(trip => trip._id !== id));
     } catch (error) {
       console.error('Error deleting trip:', error);
