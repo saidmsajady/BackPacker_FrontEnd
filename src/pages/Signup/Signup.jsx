@@ -19,7 +19,7 @@ const Signup = ({ setIsSignedIn }) => {
     }
 
     try {
-      const res = await fetch('https://backpacker-backend.onrender.com/auth/signup', {
+      const res = await fetch('http://localhost:3000/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ firstName, lastName, email, password }), // Send firstName and lastName separately

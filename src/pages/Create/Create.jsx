@@ -50,7 +50,7 @@ const Create = () => {
         },
       };
   
-      const response = await axios.post('https://backpacker-backend.onrender.com/trips', newTrip, config);
+      const response = await axios.post('http://localhost:3000/trips', newTrip, config);
   
       console.log('Trip created:', response.data.trip);
       navigate('/Trips');
