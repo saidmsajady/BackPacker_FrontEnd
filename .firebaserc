@@ -1,9 +1,5 @@
 {
   "projects": {
-    "default": "explore-mate-19731",
-    "Explore Mate": "exploremate-site"
-  },
-  "targets": {},
-  "etags": {},
-  "dataconnectEmulatorConfig": {}
+    "default": "explore-mate-site"
+  }
 }
