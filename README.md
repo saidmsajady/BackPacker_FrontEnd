@@ -1,59 +1,64 @@
-# Backpacking Trip Planner
+# Explore Mate
+
+**Backend repository:** [Explore Mate Backend](https://github.com/saidmsajady/BackPacker_BackEnd)
 
 ## Overview
 
-The Backpacking Trip Planner is a full-stack MERN application designed to help users plan and manage their backpacking trips. This project was inspired by my own experience on a Europe trip that turned out to be very disorganized and chaotic when it came to planning. I realized the need for a tool that could streamline the process, making it easier to plan trips and keep everything organized. From the very start of my class, I knew this was the project I wanted to create to help others avoid the hassles I faced and myself with future trips.
-
-With this application, users can create, read, update, and delete trips seamlessly through a React frontend connected to an Express and MongoDB backend. The application also leverages a third-party API to provide enriched information and features.
+Explore Mate is a full-stack MERN application designed to streamline the process of planning and organizing backpacking trips. Inspired by my own experiences of chaotic and disorganized trips, this project helps users plan trips efficiently, manage destinations, and validate date ranges to avoid overlapping itineraries. With features like trip reordering, API integration, and user-friendly CRUD operations, Explore Mate simplifies the process of trip planning, allowing for a smoother and more enjoyable travel experience.
 
 ## Features
 
-- **Full CRUD Operations**: Users can create, read, update, and delete trips.
-- **React Hooks**: Utilizes `useState`, `useEffect`, and other React hooks to manage state and side effects.
-- **Responsive Design**: Ensures a user-friendly experience across different devices.
-- **Third-Party API Integration**: Incorporates data from a third-party API to enhance trip planning.
-- **Four Key Pages**: Home, Create Trip, Countries, and About.
+- **Full CRUD Operations**: Seamlessly create, read, update, and delete trips.
+- **Responsive Design**: Optimized for mobile and desktop devices.
+- **Date Validation**: Prevent overlapping dates between destinations within a trip.
+- **Authentication**: Users can sign up, log in, and log out securely, with session management via JSON Web Tokens (JWT).
+- **Third-Party API Integration**: Enrich trip planning with data from a third-party API.
+- **Dynamic Country Management**: Manage and reorder countries within trips with ease.
 
 ## Technologies
 
-### FrontEnd
+### Frontend
 
 - React
 - React Router
+- React Beautiful DnD
+- Firebase Hosting
 - CSS
 
 ### Backend
 
 - Node.js
 - Express.js
-- Mongoose
+- MongoDB with Mongoose
+- Render Hosting
 
-## Future Improvements
+## Packages and Dependencies
 
-- **Drag and Drop**: Implement functionality to drag and reorder trips and countries.
-- **Additional Features**: Add user authentication, trip sharing, and more detailed trip planning options.
-- **Mobile App**: Develop a mobile version of the application using React Native.
+### Frontend
 
-## Other GitHub Repositories
+- `axios`: For making API requests.
+- `react-beautiful-dnd`: For drag-and-drop reordering.
+- `firebase`: For hosting and managing authentication.
+- `uuid`: To generate unique identifiers.
+- `react-icons`: For adding icons to the UI.
+- `react-router-dom`: For routing and navigation.
 
-- **Front End**: [Capstone_FrontEnd](https://github.com/saidmsajady/Capstone_FrontEnd.git)
-- **Back End**: [Capstone_BackEnd](https://github.com/saidmsajady/Capstone_BackEnd.git)
-- **Repo that contains my Commits**: [Capstone](https://github.com/saidmsajady/Capstone.git)
+### Backend
 
-## Installation
+- `express`: Web framework for Node.js.
+- `mongoose`: MongoDB object modeling.
+- `jsonwebtoken`: For managing user sessions.
+- `bcrypt`: For password hashing.
+- `cors`: Enabling Cross-Origin Resource Sharing.
+- `dotenv`: Managing environment variables.
+- `axios`: For API requests.
+- `morgan`: Logging HTTP requests.
 
-To set up the Backpacking Trip Planner, follow these steps:
+## Pages
 
-**Clone the Repositories:**
-
-   Clone both the frontend and backend repositories and install Dependencies:
-   - git clone https://github.com/saidmsajady/Capstone_FrontEnd.git
-   - git clone https://github.com/saidmsajady/Capstone_BackEnd.git
-
-   For the Backend, run nodemon app.js
-
-   For the Frontend, run npm run dev
-
-## Deployment
-
-Plans are underway to deploy the application. The deployment will involve setting up both the frontend and backend on a cloud platform, ensuring that the application is accessible online. More details on deployment will be provided once the setup is complete.
+- **Home Page**: Introduction to Explore Mate with the option to sign up or log in.
+- **Trips Page**: Display and manage backpacking trips, with drag-and-drop reordering and date validation.
+- **Create Page**: Create new trips and add destinations.
+- **Countries Page**: Manage country-specific details and their order within a trip.
+- **About Page**: Information about the project and its inspiration.
+- **Login/Signup**: Secure user authentication.
